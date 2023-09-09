@@ -1,7 +1,5 @@
 ﻿namespace ValoGun.Models
 {
-    public partial class Weapons
-    {
         public class Damagerange
         {
             public int rangeStartMeters { get; set; }
@@ -12,4 +10,3 @@
         }
 
     }
-}

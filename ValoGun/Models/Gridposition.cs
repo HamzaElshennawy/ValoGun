@@ -1,7 +1,5 @@
 ﻿namespace ValoGun.Models
 {
-    public partial class Weapons
-    {
         public class Gridposition
         {
             public int row { get; set; }
@@ -9,4 +7,3 @@
         }
 
     }
-}

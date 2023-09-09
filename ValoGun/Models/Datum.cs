@@ -1,7 +1,5 @@
 ﻿namespace ValoGun.Models
 {
-    public partial class Weapons
-    {
         public class Datum
         {
             public string uuid { get; set; }
@@ -17,4 +15,3 @@
         }
 
     }
-}

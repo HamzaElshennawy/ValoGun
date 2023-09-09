@@ -1,7 +1,5 @@
 ﻿namespace ValoGun.Models
 {
-    public partial class Weapons
-    {
         public class Shopdata
         {
             public int cost { get; set; }
@@ -16,4 +14,3 @@
         }
 
     }
-}

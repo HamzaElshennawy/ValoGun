@@ -1,7 +1,5 @@
 ﻿namespace ValoGun.Models
 {
-    public partial class Weapons
-    {
         public class Chroma
         {
             public string uuid { get; set; }
@@ -14,4 +12,3 @@
         }
 
     }
-}

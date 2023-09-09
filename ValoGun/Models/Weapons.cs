@@ -8,10 +8,6 @@ namespace ValoGun.Models
 {
     public partial class Weapons
     {
-
-        public int status { get; set; }
-        public Datum[] data { get; set; }
-
-
+		public Datum[] data { get; set; } 
     }
 }

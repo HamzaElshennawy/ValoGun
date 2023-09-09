@@ -1,7 +1,5 @@
 ﻿namespace ValoGun.Models
 {
-    public partial class Weapons
-    {
         public class Level
         {
             public string uuid { get; set; }
@@ -13,4 +11,3 @@
         }
 
     }
-}

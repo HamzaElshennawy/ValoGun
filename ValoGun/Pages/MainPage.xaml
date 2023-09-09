@@ -1,41 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              x:Class="ValoGun.MainPage">
 
+    <ContentPage.BindingContext>
+        <viewmodels:HomePageViewModel/>
+    </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <CollectionView
+            ItemsSource="{Binding Weapons}"
+            >
+            <!--<CollectionView.GroupHeaderTemplate>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+                <DataTemplate>
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                    <Label FontSize="18" FontAttributes="Bold" BackgroundColor="Gray" Text="{Binding category}" />
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                </DataTemplate>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            </CollectionView.GroupHeaderTemplate>-->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame 
+                        Margin="20,10,20,0" 
+                        
+                        HeightRequest="150" 
+                        VerticalOptions="StartAndExpand" 
+                        BackgroundColor="Gray">
+                        <Grid RowDefinitions=".9*,.1*">
+                            <Image Source="{Binding displayIcon}" 
+                               Grid.Row="0" 
+                               Grid.RowSpan="2"/>
 
-        </VerticalStackLayout>
+                            <Label Text="{Binding displayName}" Grid.Row="1"
+                                   Margin="0,0,0,-0"
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="EndAndExpand"
+                                   FontSize="28" 
+                                   HorizontalOptions="CenterAndExpand"
+                                   HeightRequest="30"
+                                   MinimumWidthRequest="50"
+                                   BackgroundColor="White"
+                                   TextColor="black"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding category}" Grid.Row="1"
+                                   Margin="0,0,0,-0"
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="EndAndExpand"
+                                   FontSize="28" 
+                                   HorizontalOptions="StartAndExpand"
+                                   HeightRequest="30"
+                                   MinimumWidthRequest="50"
+                                   BackgroundColor="White"
+                                   TextColor="black"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding shopData.cost}" Grid.Row="1"
+                                   Margin="0,0,0,-0"
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="EndAndExpand"
+                                   FontSize="28" 
+                                   HorizontalOptions="EndAndExpand"
+                                   HeightRequest="30"
+                                   MinimumWidthRequest="50"
+                                   BackgroundColor="White"
+                                   TextColor="black"
+                                   FontAttributes="Bold"/>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ScrollView>
-
 </ContentPage>
