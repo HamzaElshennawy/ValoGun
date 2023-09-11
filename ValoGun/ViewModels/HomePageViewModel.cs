@@ -8,7 +8,7 @@ namespace ValoGun.ViewModels
 	{
 
 		public ObservableRangeCollection<Datum> Weapons { get; set; }
-		public List<GroupedWeapons> GWeapons{ get; set; } = new List<GroupedWeapons>();
+		public ObservableRangeCollection<Grouping<string, Datum>> GWeapons { get; set; } = new();
 		public ObservableRangeCollection<Skin> Skins { get; set; }
 
 
@@ -37,9 +37,9 @@ namespace ValoGun.ViewModels
 				var stream = await FileSystem.OpenAppPackageFileAsync(filePath);
 				var reader = new StreamReader(stream);
 
-					
+
 				string data = reader.ReadToEnd();
-				
+
 				// Deserialize the JSON data into an object
 				var jsonData = JsonConvert.DeserializeObject<Weapons>(data);
 				foreach (var weapon in jsonData.data)
@@ -47,14 +47,30 @@ namespace ValoGun.ViewModels
 					Weapons.Add(weapon);
 					OnPropertyChanged(nameof(Weapons));
 				}
-				//var dict = (Weapons.OrderBy(x => x.category)).GroupBy(o => o.category.Substring(0, 1)).ToDictionary(g => g.Key, g => g.ToList());
 
-				//foreach (KeyValuePair<string, List<Datum>> item in dict)
+				Weapons.OrderBy(c => c.shopData.cost);
+
+
+				GWeapons.Add(new Grouping<string, Datum>("Heavy", Weapons.Where(c => c.category == "Heavy")));
+				GWeapons.Add(new Grouping<string, Datum>("Sniper", Weapons.Where(c => c.category == "Sniper")));
+				GWeapons.Add(new Grouping<string, Datum>("Rifles", Weapons.Where(c => c.category == "Rifles")));
+				GWeapons.Add(new Grouping<string, Datum>("Shotgun", Weapons.Where(c => c.category == "Shotgun")));
+				GWeapons.Add(new Grouping<string, Datum>("SMG", Weapons.Where(c => c.category == "SMG")));
+				GWeapons.Add(new Grouping<string, Datum>("Sidearm", Weapons.Where(c => c.category == "Sidearm")));
+				GWeapons.Add(new Grouping<string, Datum>("Melee", Weapons.Where(c => c.category == "Melee")));
+				//sort GWeapons list by shop price
+				//for some reason this loop doesnt work
+				//why?
+
+				//foreach (var gWeapon in GWeapons)
 				//{
-
-				//	GWeapons.Add(new GroupedWeapons(item.Key, new List<Datum>(item.Value)));
-				//	OnPropertyChanged(nameof(GWeapons));
+				//	gWeapon.OrderBy(c => c.shopData.cost);
+				//	OnPropertyChanged(nameof(gWeapon));
 				//}
+				//sort GWeapons list by category
+				//GWeapons.OrderBy(c => c.Category);
+				OnPropertyChanged(nameof(GWeapons));
+
 
 
 			}

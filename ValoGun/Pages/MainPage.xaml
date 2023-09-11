@@ -9,17 +9,28 @@
     </ContentPage.BindingContext>
     <ScrollView>
         <CollectionView
-            ItemsSource="{Binding Weapons}"
+            IsGrouped="True"
+            BackgroundColor="Transparent"
+            ItemsSource="{Binding GWeapons}"
+            
             >
-            <!--<CollectionView.GroupHeaderTemplate>
+            <CollectionView.GroupHeaderTemplate>
 
-                <DataTemplate>
-
-                    <Label FontSize="18" FontAttributes="Bold" BackgroundColor="Gray" Text="{Binding category}" />
+                <DataTemplate x:DataType="{x:Null}">
+                    <!--<Line HeightRequest="2" BackgroundColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="600"/>-->
+                    <Label FontSize="20"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="CenterAndExpand"
+                           FontAttributes="Bold"
+                           BackgroundColor="red"
+                           TextColor="White"
+                           FontAutoScalingEnabled="True"
+                           
+                           Text="{Binding Key}" />
 
                 </DataTemplate>
 
-            </CollectionView.GroupHeaderTemplate>-->
+            </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame 
