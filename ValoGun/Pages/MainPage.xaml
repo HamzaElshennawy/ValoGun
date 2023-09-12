@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
-             x:Class="ValoGun.MainPage">
+             x:Class="ValoGun.MainPage"
+             BackgroundColor="Black">
 
     <ContentPage.BindingContext>
         <viewmodels:HomePageViewModel/>
@@ -12,7 +13,6 @@
             IsGrouped="True"
             BackgroundColor="Transparent"
             ItemsSource="{Binding GWeapons}"
-            
             >
             <CollectionView.GroupHeaderTemplate>
 
@@ -20,6 +20,8 @@
                     <!--<Line HeightRequest="2" BackgroundColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="600"/>-->
                     <Label FontSize="20"
                            HorizontalTextAlignment="Center"
+                           HorizontalOptions="CenterAndExpand"
+                           WidthRequest="500"
                            VerticalOptions="CenterAndExpand"
                            FontAttributes="Bold"
                            BackgroundColor="red"
@@ -35,7 +37,7 @@
                 <DataTemplate>
                     <Frame 
                         Margin="20,10,20,0" 
-                        
+                        BorderColor="Transparent"
                         HeightRequest="150" 
                         VerticalOptions="StartAndExpand" 
                         BackgroundColor="Gray">

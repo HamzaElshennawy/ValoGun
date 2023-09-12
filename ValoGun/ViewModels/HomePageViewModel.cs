@@ -1,4 +1,5 @@
 ﻿using MvvmHelpers;
+using MvvmHelpers.Commands;
 using Newtonsoft.Json;
 using ValoGun.Models;
 
@@ -6,10 +7,19 @@ namespace ValoGun.ViewModels
 {
 	public class HomePageViewModel : BaseViewModel
 	{
-
+		public static Weapons selectedWeapon { get; set; } = null!;
 		public ObservableRangeCollection<Datum> Weapons { get; set; }
 		public ObservableRangeCollection<Grouping<string, Datum>> GWeapons { get; set; } = new();
 		public ObservableRangeCollection<Skin> Skins { get; set; }
+
+
+		public AsyncCommand NavigateToStatus => new AsyncCommand(async () =>
+		{
+            await MainThread.InvokeOnMainThreadAsync(async () =>
+			{
+				await GoToPage(selectedWeapon);
+            });
+        });
 
 
 		private Thread DataThread { get; set; }
@@ -53,7 +63,7 @@ namespace ValoGun.ViewModels
 
 				GWeapons.Add(new Grouping<string, Datum>("Heavy", Weapons.Where(c => c.category == "Heavy")));
 				GWeapons.Add(new Grouping<string, Datum>("Sniper", Weapons.Where(c => c.category == "Sniper")));
-				GWeapons.Add(new Grouping<string, Datum>("Rifles", Weapons.Where(c => c.category == "Rifles")));
+				GWeapons.Add(new Grouping<string, Datum>("Rifles", Weapons.Where(c => c.category == "Rifle")));
 				GWeapons.Add(new Grouping<string, Datum>("Shotgun", Weapons.Where(c => c.category == "Shotgun")));
 				GWeapons.Add(new Grouping<string, Datum>("SMG", Weapons.Where(c => c.category == "SMG")));
 				GWeapons.Add(new Grouping<string, Datum>("Sidearm", Weapons.Where(c => c.category == "Sidearm")));
@@ -65,11 +75,11 @@ namespace ValoGun.ViewModels
 				//foreach (var gWeapon in GWeapons)
 				//{
 				//	gWeapon.OrderBy(c => c.shopData.cost);
-				//	OnPropertyChanged(nameof(gWeapon));
+				//	OnPropertyChanged(nameof(GWeapons));
 				//}
-				//sort GWeapons list by category
-				//GWeapons.OrderBy(c => c.Category);
-				OnPropertyChanged(nameof(GWeapons));
+				////sort GWeapons list by category
+				////GWeapons.OrderBy(c => c.Category);
+				//OnPropertyChanged(nameof(GWeapons));
 
 
 
@@ -88,5 +98,9 @@ namespace ValoGun.ViewModels
 
 			return Task.CompletedTask;
 		}
+		private async Task GoToPage(Weapons weapon)
+		{
+            await Shell.Current.GoToAsync($"{nameof(WeaponStatusViewModel)}?MainWeapon = {weapon}");
+        }
 	}
 }
