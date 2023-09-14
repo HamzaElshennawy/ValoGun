@@ -1,12 +1,13 @@
-﻿using MvvmHelpers;
+﻿using CommunityToolkit.Mvvm.Input;
+using MvvmHelpers;
 using MvvmHelpers.Commands;
 using Newtonsoft.Json;
-using System.Windows.Input;
 using ValoGun.Models;
+using ValoGun.Pages;
 
 namespace ValoGun.ViewModels
 {
-	public class HomePageViewModel : BaseViewModel
+	public partial class HomePageViewModel : BaseViewModel
 	{
 		Weapons SelectedWeapon;
 		public Weapons selectedWeapon
@@ -14,11 +15,12 @@ namespace ValoGun.ViewModels
 			get => SelectedWeapon;
 			set
 			{
-				if (SelectedWeapon == value)
+				if (SelectedWeapon != value)
 				{
-					return;
+					SelectedWeapon = value;
+					OnPropertyChanged(nameof(SelectedWeapon));
+					//GoToPage();
 				}
-				SelectedWeapon = value;
 			}
 		}
 		public ObservableRangeCollection<Datum> Weapons { get; set; }
@@ -26,7 +28,7 @@ namespace ValoGun.ViewModels
 		public ObservableRangeCollection<Skin> Skins { get; set; }
 
 
-		public AsyncCommand NavigateToStatus => new(GoToPage);
+		//public AsyncCommand NavigateToStatus => new(GoToPage);
 
 
 		private Thread DataThread { get; set; }
@@ -68,13 +70,13 @@ namespace ValoGun.ViewModels
 				Weapons.OrderBy(c => c.shopData.cost);
 
 
-				GWeapons.Add(new Grouping<string, Datum>("Heavy", Weapons.Where(c => c.category == "Heavy")));
-				GWeapons.Add(new Grouping<string, Datum>("Sniper", Weapons.Where(c => c.category == "Sniper")));
-				GWeapons.Add(new Grouping<string, Datum>("Rifles", Weapons.Where(c => c.category == "Rifle")));
-				GWeapons.Add(new Grouping<string, Datum>("Shotgun", Weapons.Where(c => c.category == "Shotgun")));
-				GWeapons.Add(new Grouping<string, Datum>("SMG", Weapons.Where(c => c.category == "SMG")));
-				GWeapons.Add(new Grouping<string, Datum>("Sidearm", Weapons.Where(c => c.category == "Sidearm")));
-				GWeapons.Add(new Grouping<string, Datum>("Melee", Weapons.Where(c => c.category == "Melee")));
+				GWeapons.Add(new Grouping<string, Datum>("Heavy", Weapons.Where(c => c.category == "Heavy").OrderBy((w)=>w.shopData.cost)));
+				GWeapons.Add(new Grouping<string, Datum>("Sniper", Weapons.Where(c => c.category == "Sniper").OrderBy((w) => w.shopData.cost)));
+				GWeapons.Add(new Grouping<string, Datum>("Rifles", Weapons.Where(c => c.category == "Rifle").OrderBy((w) => w.shopData.cost)));
+				GWeapons.Add(new Grouping<string, Datum>("Shotgun", Weapons.Where(c => c.category == "Shotgun").OrderBy((w) => w.shopData.cost)));
+				GWeapons.Add(new Grouping<string, Datum>("SMG", Weapons.Where(c => c.category == "SMG").OrderBy((w) => w.shopData.cost)));
+				GWeapons.Add(new Grouping<string, Datum>("Sidearm", Weapons.Where(c => c.category == "Sidearm").OrderBy((w) => w.shopData.cost)));
+				GWeapons.Add(new Grouping<string, Datum>("Knife", Weapons.Where(c => c.category == "Melee")));
 
 			}
 			catch (Exception e)
@@ -91,9 +93,12 @@ namespace ValoGun.ViewModels
 
 			return Task.CompletedTask;
 		}
-		private async Task GoToPage()
+		[RelayCommand]
+		private async Task GoToPage(Datum _selectedWeapon)
 		{
-			await MainThread.InvokeOnMainThreadAsync(async () => await Shell.Current.GoToAsync($"{nameof(WeaponStatusViewModel)}?MainWeapon = {selectedWeapon}"));
+			await Shell.Current.DisplayAlert("Alert", "You have selected " + _selectedWeapon.displayName, "Ok");
+			WeaponStatusViewModel.MainWeapon = _selectedWeapon;
+			await Shell.Current.GoToAsync(nameof(WeaponStatusPage),true);
 		}
 	}
 }

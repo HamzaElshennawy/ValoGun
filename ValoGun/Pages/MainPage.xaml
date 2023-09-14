@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
+             xmlns:model="clr-namespace:ValoGun.Models"
              x:Class="ValoGun.MainPage"
              BackgroundColor="#18181A">
 
@@ -13,14 +14,12 @@
             IsGrouped="True"
             BackgroundColor="Transparent"
             ItemsSource="{Binding GWeapons}"
-            SelectedItem="{Binding selectedWeapon}"
-            SelectionChangedCommand="{Binding NavigateToStatus}"
-            SelectionMode="Single"
+            SelectionMode="None"
             Margin="0,10,0,0"
             >
             <CollectionView.GroupHeaderTemplate>
 
-                <DataTemplate x:DataType="{x:Null}">
+                <DataTemplate >
                     <!--<Line HeightRequest="2" BackgroundColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="600"/>-->
                     <Frame 
                         Padding="0" 
@@ -30,20 +29,19 @@
                         WidthRequest="200"
                         BackgroundColor="#5D5D63"
                         >
+                        
                         <Label 
-                           FontSize="18"
-                           HorizontalTextAlignment="Center"
-                           HorizontalOptions="CenterAndExpand"
-                           WidthRequest="100"
-                           VerticalOptions="CenterAndExpand"
-                           FontAttributes="Bold"
-                           TextColor="#F2F2F3"
-                           FontAutoScalingEnabled="True"
-                           Text="{Binding Key}" />
+                            FontSize="18"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="100"
+                            VerticalOptions="CenterAndExpand"
+                            FontAttributes="Bold"
+                            TextColor="#F2F2F3"
+                            FontAutoScalingEnabled="True"
+                            Text="{Binding Key}" />
                     </Frame>
-
                 </DataTemplate>
-
             </CollectionView.GroupHeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -54,31 +52,37 @@
                         HeightRequest="170" 
                         VerticalOptions="StartAndExpand" 
                         BackgroundColor="#272729">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToPageCommand}" CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
                         <Grid RowDefinitions=".9*,.1*">
                             <Image Source="{Binding displayIcon}" 
                                Grid.Row="0" 
                                Grid.RowSpan="2"
-                               Margin="0,0,0,0"    />
+                               Margin="0,0,0,0"    />   
 
-                            <Frame Grid.Row="1" BackgroundColor="#18181A" HeightRequest="30" Padding="0" VerticalOptions="EndAndExpand" Margin="0,0,0,0">
-                                <Grid >
-                                    <Label Text="{Binding displayName}" Grid.Column="0"
-                                       Margin="0,0,0,-0"
-                                       VerticalTextAlignment="Center" 
-                                       HorizontalTextAlignment="Center"
-                                       VerticalOptions="Center"
-                                       FontSize="20" 
-                                       HorizontalOptions="Center"
-                                       HeightRequest="30"
-                                       MinimumWidthRequest="50"
-                                       TextColor="#F2F2F3"
-                                       FontAttributes="Bold"/>
-
-                                </Grid>
+                            <Frame 
+                                Grid.Row="1" 
+                                BackgroundColor="#18181A" 
+                                Opacity="0.7"
+                                BorderColor="Transparent"
+                                HeightRequest="30" 
+                                Padding="0" 
+                                VerticalOptions="EndAndExpand"
+                                Margin="0,0,0,0">
+                                <Label Text="{Binding displayName}" Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="Center"
+                                    FontSize="20" 
+                                    HorizontalOptions="Center"
+                                    HeightRequest="30"
+                                    MinimumWidthRequest="50"
+                                    TextColor="#F2F2F3"
+                                    FontAttributes="Bold"/>
                             </Frame>
-
                         </Grid>
-
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
