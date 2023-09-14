@@ -1,25 +1,32 @@
 ﻿using MvvmHelpers;
 using MvvmHelpers.Commands;
 using Newtonsoft.Json;
+using System.Windows.Input;
 using ValoGun.Models;
 
 namespace ValoGun.ViewModels
 {
 	public class HomePageViewModel : BaseViewModel
 	{
-		public static Weapons selectedWeapon { get; set; } = null!;
+		Weapons SelectedWeapon;
+		public Weapons selectedWeapon
+		{
+			get => SelectedWeapon;
+			set
+			{
+				if (SelectedWeapon == value)
+				{
+					return;
+				}
+				SelectedWeapon = value;
+			}
+		}
 		public ObservableRangeCollection<Datum> Weapons { get; set; }
 		public ObservableRangeCollection<Grouping<string, Datum>> GWeapons { get; set; } = new();
 		public ObservableRangeCollection<Skin> Skins { get; set; }
 
 
-		public AsyncCommand NavigateToStatus => new AsyncCommand(async () =>
-		{
-            await MainThread.InvokeOnMainThreadAsync(async () =>
-			{
-				await GoToPage(selectedWeapon);
-            });
-        });
+		public AsyncCommand NavigateToStatus => new(GoToPage);
 
 
 		private Thread DataThread { get; set; }
@@ -68,20 +75,6 @@ namespace ValoGun.ViewModels
 				GWeapons.Add(new Grouping<string, Datum>("SMG", Weapons.Where(c => c.category == "SMG")));
 				GWeapons.Add(new Grouping<string, Datum>("Sidearm", Weapons.Where(c => c.category == "Sidearm")));
 				GWeapons.Add(new Grouping<string, Datum>("Melee", Weapons.Where(c => c.category == "Melee")));
-				//sort GWeapons list by shop price
-				//for some reason this loop doesnt work
-				//why?
-
-				//foreach (var gWeapon in GWeapons)
-				//{
-				//	gWeapon.OrderBy(c => c.shopData.cost);
-				//	OnPropertyChanged(nameof(GWeapons));
-				//}
-				////sort GWeapons list by category
-				////GWeapons.OrderBy(c => c.Category);
-				//OnPropertyChanged(nameof(GWeapons));
-
-
 
 			}
 			catch (Exception e)
@@ -98,9 +91,9 @@ namespace ValoGun.ViewModels
 
 			return Task.CompletedTask;
 		}
-		private async Task GoToPage(Weapons weapon)
+		private async Task GoToPage()
 		{
-            await Shell.Current.GoToAsync($"{nameof(WeaponStatusViewModel)}?MainWeapon = {weapon}");
-        }
+			await MainThread.InvokeOnMainThreadAsync(async () => await Shell.Current.GoToAsync($"{nameof(WeaponStatusViewModel)}?MainWeapon = {selectedWeapon}"));
+		}
 	}
 }

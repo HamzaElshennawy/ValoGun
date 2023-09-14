@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              x:Class="ValoGun.MainPage"
-             BackgroundColor="Black">
+             BackgroundColor="#18181A">
 
     <ContentPage.BindingContext>
         <viewmodels:HomePageViewModel/>
@@ -13,22 +13,34 @@
             IsGrouped="True"
             BackgroundColor="Transparent"
             ItemsSource="{Binding GWeapons}"
+            SelectedItem="{Binding selectedWeapon}"
+            SelectionChangedCommand="{Binding NavigateToStatus}"
+            SelectionMode="Single"
+            Margin="0,10,0,0"
             >
             <CollectionView.GroupHeaderTemplate>
 
                 <DataTemplate x:DataType="{x:Null}">
                     <!--<Line HeightRequest="2" BackgroundColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="600"/>-->
-                    <Label FontSize="20"
+                    <Frame 
+                        Padding="0" 
+                        VerticalOptions="Center" 
+                        HorizontalOptions="CenterAndExpand" 
+                        HeightRequest="40" 
+                        WidthRequest="200"
+                        BackgroundColor="#5D5D63"
+                        >
+                        <Label 
+                           FontSize="18"
                            HorizontalTextAlignment="Center"
                            HorizontalOptions="CenterAndExpand"
-                           WidthRequest="500"
+                           WidthRequest="100"
                            VerticalOptions="CenterAndExpand"
                            FontAttributes="Bold"
-                           BackgroundColor="red"
-                           TextColor="White"
+                           TextColor="#F2F2F3"
                            FontAutoScalingEnabled="True"
-                           
                            Text="{Binding Key}" />
+                    </Frame>
 
                 </DataTemplate>
 
@@ -36,54 +48,37 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame 
-                        Margin="20,10,20,0" 
-                        BorderColor="Transparent"
-                        HeightRequest="150" 
+                        Padding="6"
+                        Margin="20,5,20,10" 
+                        BorderColor="#272729"
+                        HeightRequest="170" 
                         VerticalOptions="StartAndExpand" 
-                        BackgroundColor="Gray">
+                        BackgroundColor="#272729">
                         <Grid RowDefinitions=".9*,.1*">
                             <Image Source="{Binding displayIcon}" 
                                Grid.Row="0" 
-                               Grid.RowSpan="2"/>
+                               Grid.RowSpan="2"
+                               Margin="0,0,0,0"    />
 
-                            <Label Text="{Binding displayName}" Grid.Row="1"
-                                   Margin="0,0,0,-0"
-                                   VerticalTextAlignment="Center" 
-                                   HorizontalTextAlignment="Center"
-                                   VerticalOptions="EndAndExpand"
-                                   FontSize="28" 
-                                   HorizontalOptions="CenterAndExpand"
-                                   HeightRequest="30"
-                                   MinimumWidthRequest="50"
-                                   BackgroundColor="White"
-                                   TextColor="black"
-                                   FontAttributes="Bold"/>
-                            <Label Text="{Binding category}" Grid.Row="1"
-                                   Margin="0,0,0,-0"
-                                   VerticalTextAlignment="Center" 
-                                   HorizontalTextAlignment="Center"
-                                   VerticalOptions="EndAndExpand"
-                                   FontSize="28" 
-                                   HorizontalOptions="StartAndExpand"
-                                   HeightRequest="30"
-                                   MinimumWidthRequest="50"
-                                   BackgroundColor="White"
-                                   TextColor="black"
-                                   FontAttributes="Bold"/>
-                            <Label Text="{Binding shopData.cost}" Grid.Row="1"
-                                   Margin="0,0,0,-0"
-                                   VerticalTextAlignment="Center" 
-                                   HorizontalTextAlignment="Center"
-                                   VerticalOptions="EndAndExpand"
-                                   FontSize="28" 
-                                   HorizontalOptions="EndAndExpand"
-                                   HeightRequest="30"
-                                   MinimumWidthRequest="50"
-                                   BackgroundColor="White"
-                                   TextColor="black"
-                                   FontAttributes="Bold"/>
+                            <Frame Grid.Row="1" BackgroundColor="#18181A" HeightRequest="30" Padding="0" VerticalOptions="EndAndExpand" Margin="0,0,0,0">
+                                <Grid >
+                                    <Label Text="{Binding displayName}" Grid.Column="0"
+                                       Margin="0,0,0,-0"
+                                       VerticalTextAlignment="Center" 
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="20" 
+                                       HorizontalOptions="Center"
+                                       HeightRequest="30"
+                                       MinimumWidthRequest="50"
+                                       TextColor="#F2F2F3"
+                                       FontAttributes="Bold"/>
+
+                                </Grid>
+                            </Frame>
 
                         </Grid>
+
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
