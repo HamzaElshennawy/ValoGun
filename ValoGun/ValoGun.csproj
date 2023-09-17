@@ -60,27 +60,47 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\Agents\Agents.png" />
+	  <None Remove="Images\Agents\Background.svg" />
+	  <None Remove="Images\Maps\Ascent.png" />
+	  <None Remove="Images\Maps\Background.svg" />
+	  <None Remove="Images\Weapons\Background.svg" />
+	  <None Remove="Images\Weapons\Weapons.png" />
 	  <None Remove="Resources\Raw\Odin.json" />
 	  <None Remove="Resources\Raw\Vandal.json" />
 	</ItemGroup>
 
-	
+	<ItemGroup>
+	  <EmbeddedResource Include="Odin.json" />
+	  <EmbeddedResource Include="weapons.json" />
+	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Include="Vandal.json" />
 	  <MauiAsset Include="weapons.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
-		<PackageReference Include="System.ObjectModel" Version="4.3.0" />
+	  <MauiImage Include="Images\Agents\agents.png" />
+	  <MauiImage Include="Images\Agents\background.svg" />
+	  <MauiImage Include="Images\Maps\ascent.png" />
+	  <MauiImage Include="Images\Maps\background.svg" />
+	  <MauiImage Include="Images\Weapons\background.svg" />
+	  <MauiImage Include="Images\Weapons\weapons.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-preview.7.23364.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\WeaponStatusPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -95,47 +115,6 @@
   <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Release'">
     <CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Release.plist</CodesignEntitlements>
     <UseHardenedRuntime>true</UseHardenedRuntime>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
-    <WarningLevel>7</WarningLevel>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
-    <WarningLevel>7</WarningLevel>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
-    <WarningLevel>7</WarningLevel>
-    <ApplicationId>com.survivors.valogun</ApplicationId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-    <ApplicationId>com.survivors.valogun</ApplicationId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
-    <ApplicationId>com.survivors.valogun</ApplicationId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
-    <ApplicationId>com.survivors.valogun</ApplicationId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-    <ApplicationId>com.survivors.valogun</ApplicationId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-    <ApplicationId>com.survivors.valogun</ApplicationId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
-    <ApplicationId>com.survivors.valogun</ApplicationId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
-    <ApplicationId>com.survivors.valogun</ApplicationId>
   </PropertyGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionValoGunHideInfoBar="True" /></VisualStudio></ProjectExtensions>
