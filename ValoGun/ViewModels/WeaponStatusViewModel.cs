@@ -29,7 +29,6 @@ namespace ValoGun.ViewModels
 		public WeaponStatusViewModel()
 		{
 			Title = MainWeapon.displayName;
-			OnPropertyChanged(nameof(MainWeapon));
 			Thread SkinsThread = new(async () => await LoadSkins());
 			SkinsThread.Start();
 			RefreshCommand = new AsyncCommand(LoadSkins);
@@ -41,15 +40,6 @@ namespace ValoGun.ViewModels
 			float Counter = 0;
 			await MainThread.InvokeOnMainThreadAsync(() => Skins.Clear());
 			totalProgress = MainWeapon.skins.Length;
-			//for(int i = 0; i<totalProgress; i++)
-			//{
-			//	SkinsToShow _skin = new();
-			//	Skins.Add(_skin);
-			//	progress = Counter / totalProgress;
-			//	Counter++;
-			//	await MainThread.InvokeOnMainThreadAsync(() => OnPropertyChanged(nameof(progress)));
-			//	await MainThread.InvokeOnMainThreadAsync(() => OnPropertyChanged(nameof(Skins)));
-			//}
 			foreach (var skin in MainWeapon.skins)
 			{
 				Skins.Add(skin);
