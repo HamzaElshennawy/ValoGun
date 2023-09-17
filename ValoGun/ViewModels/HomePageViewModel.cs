@@ -96,7 +96,7 @@ namespace ValoGun.ViewModels
 		[RelayCommand]
 		private async Task GoToPage(Datum _selectedWeapon)
 		{
-			await Shell.Current.DisplayAlert("Alert", "You have selected " + _selectedWeapon.displayName, "Ok");
+			//await Shell.Current.DisplayAlert("Alert", "You have selected " + _selectedWeapon.displayName, "Ok");
 			WeaponStatusViewModel.MainWeapon = _selectedWeapon;
 			await Shell.Current.GoToAsync(nameof(WeaponStatusPage),true);
 		}

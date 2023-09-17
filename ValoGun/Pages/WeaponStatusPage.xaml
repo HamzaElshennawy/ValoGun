@@ -6,19 +6,52 @@
              x:DataType="viewmodels:WeaponStatusViewModel"
              xmlns:model="clr-namespace:ValoGun.Models"
              Title="{Binding MainWeapon.displayName}">
-    <ScrollView>
-        <CollectionView ItemsSource="{Binding Skins}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Skin">
 
-                    <Frame>
-                        <Grid>
-                            <Image Source="{Binding displayIcon}"/>
-                        </Grid>
-                    </Frame>
+    <CollectionView ItemsSource="{Binding Skins}" SelectionMode="None"
+                  >
+        <CollectionView.Header>
+            <ProgressBar Progress="{Binding progress}"/>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Skin">
+                <Frame 
+                            Padding="6"
+                            Margin="20,5,20,10" 
+                            BorderColor="#272729"
+                            HeightRequest="170" 
+                            VerticalOptions="StartAndExpand" 
+                            BackgroundColor="#272729">
 
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </ScrollView>
+                    <Grid RowDefinitions=".9*,.1*">
+                        <Image Source="{Binding displayIcon}" 
+                               Grid.Row="0" 
+                               Grid.RowSpan="2"
+                               Margin="0,0,0,0"    />
+
+                        <Frame 
+                                Grid.Row="1" 
+                                BackgroundColor="#18181A" 
+                                Opacity="0.7"
+                                BorderColor="Transparent"
+                                HeightRequest="30" 
+                                Padding="0" 
+                                VerticalOptions="EndAndExpand"
+                                Margin="0,0,0,0">
+                            <Label Text="{Binding displayName}" Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="Center"
+                                    FontSize="20" 
+                                    HorizontalOptions="Center"
+                                    HeightRequest="30"
+                                    MinimumWidthRequest="50"
+                                    TextColor="#F2F2F3"
+                                    FontAttributes="Bold"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

@@ -17,9 +17,7 @@ namespace ValoGun
             builder.Services.AddSingleton<HomePageViewModel>();
             builder.Services.AddTransient<WeaponStatusViewModel>();
 			builder.Services.AddSingleton<MainPage>();
-#if DEBUG
-            builder.Logging.AddDebug();
-#endif
+
             return builder.Build();
         }
     }
