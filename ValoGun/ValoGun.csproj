@@ -60,12 +60,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\Agents\agentbackground.svg" />
 	  <None Remove="Images\Agents\Agents.png" />
-	  <None Remove="Images\Agents\Background.svg" />
 	  <None Remove="Images\Maps\Ascent.png" />
-	  <None Remove="Images\Maps\Background.svg" />
-	  <None Remove="Images\Weapons\Background.svg" />
+	  <None Remove="Images\Maps\mapsbackground.svg" />
 	  <None Remove="Images\Weapons\Weapons.png" />
+	  <None Remove="Images\Weapons\weaponsbackground.svg" />
 	  <None Remove="Resources\Raw\Odin.json" />
 	  <None Remove="Resources\Raw\Vandal.json" />
 	</ItemGroup>
@@ -82,10 +82,10 @@
 
 	<ItemGroup>
 	  <MauiImage Include="Images\Agents\agents.png" />
-	  <MauiImage Include="Images\Agents\background.svg" />
+	  <MauiImage Include="Images\Agents\agentbackground.svg" />
 	  <MauiImage Include="Images\Maps\ascent.png" />
-	  <MauiImage Include="Images\Maps\background.svg" />
-	  <MauiImage Include="Images\Weapons\background.svg" />
+	  <MauiImage Include="Images\Maps\mapsbackground.svg" />
+	  <MauiImage Include="Images\Weapons\weaponsbackground.svg" />
 	  <MauiImage Include="Images\Weapons\weapons.png" />
 	</ItemGroup>
 
@@ -98,10 +98,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\WeaponSkinsPage.xaml.cs">
+	    <DependentUpon>WeaponSkinsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\WeaponStatusPage.xaml">
+	  <MauiXaml Update="Pages\WeaponSkinsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

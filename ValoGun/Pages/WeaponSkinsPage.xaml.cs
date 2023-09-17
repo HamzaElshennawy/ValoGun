@@ -3,9 +3,9 @@ using ValoGun.ViewModels;
 
 namespace ValoGun.Pages;
 
-public partial class WeaponStatusPage : ContentPage
+public partial class WeaponSkinsPage : ContentPage
 {
-	public WeaponStatusPage()
+	public WeaponSkinsPage()
 	{
 		InitializeComponent();
 		BindingContext = new WeaponStatusViewModel();

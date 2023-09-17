@@ -6,7 +6,7 @@
     <ScrollView Margin="0" Padding="0">
         <StackLayout>
             <Frame>
-                
+                <Label Text="test"/>
             </Frame>
             <Frame>
 

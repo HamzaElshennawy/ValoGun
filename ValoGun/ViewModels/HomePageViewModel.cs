@@ -98,7 +98,7 @@ namespace ValoGun.ViewModels
 		{
 			//await Shell.Current.DisplayAlert("Alert", "You have selected " + _selectedWeapon.displayName, "Ok");
 			WeaponStatusViewModel.MainWeapon = _selectedWeapon;
-			await Shell.Current.GoToAsync(nameof(WeaponStatusPage),true);
+			await Shell.Current.GoToAsync(nameof(WeaponSkinsPage),true);
 		}
 	}
 }
