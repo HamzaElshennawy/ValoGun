@@ -60,23 +60,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Agents.json" />
 	  <None Remove="Images\Agents\agentbackground.svg" />
 	  <None Remove="Images\Agents\Agents.png" />
 	  <None Remove="Images\Maps\Ascent.png" />
 	  <None Remove="Images\Maps\mapsbackground.svg" />
 	  <None Remove="Images\Weapons\Weapons.png" />
 	  <None Remove="Images\Weapons\weaponsbackground.svg" />
+	  <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
 	  <None Remove="Resources\Raw\Odin.json" />
 	  <None Remove="Resources\Raw\Vandal.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Odin.json" />
 	  <EmbeddedResource Include="weapons.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiAsset Include="Vandal.json" />
 	  <MauiAsset Include="weapons.json" />
 	</ItemGroup>
 
@@ -90,20 +90,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-preview.7.23364.3" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\AgentsPage.xaml.cs">
+	    <DependentUpon>AgentsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\WeaponsPage.xaml.cs">
+	    <DependentUpon>WeaponsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\WeaponSkinsPage.xaml.cs">
 	    <DependentUpon>WeaponSkinsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AgentsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -121,6 +131,10 @@
   <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Release'">
     <CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Release.plist</CodesignEntitlements>
     <UseHardenedRuntime>true</UseHardenedRuntime>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionValoGunHideInfoBar="True" /></VisualStudio></ProjectExtensions>

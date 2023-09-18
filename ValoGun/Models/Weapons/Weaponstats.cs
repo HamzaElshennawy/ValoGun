@@ -1,6 +1,4 @@
-﻿using static ValoGun.Models.Weapons;
-
-namespace ValoGun.Models
+﻿namespace ValoGun.Models.Weapons
 {
 
 	public class Weaponstats

@@ -2,13 +2,91 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ValoGun.Pages.HomePage"
-             Title="HomePage">
-    <ScrollView Margin="0" Padding="0">
+             xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
+             Title="HomePage"
+             BackgroundColor="#18181A">
+    <ContentPage.BindingContext>
+        <viewmodels:HomePageViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView Margin="10" Padding="0">
         <StackLayout>
-            <Frame>
-                <Label Text="test"/>
+            <Frame 
+                HeightRequest="200"
+                BackgroundColor="#272729"
+                Margin="0,0,0,5"
+                BorderColor="red">
+                <Grid ColumnDefinitions=".5*,.5*">
+                    
+                <Label 
+                    Text="Agents"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="32"
+                    TextColor="#FFFFFF"
+                    FontAttributes="Bold"
+                    Grid.Column="0"/>
+                    <Grid Grid.Column="1" >
+                        <Image Source="Images/Agents/agentbackground.svg" Aspect="Fill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Image Source="Images/Agents/agents.png" Aspect="Fill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                        
+                    </Grid>
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToAgentsPageCommand}" NumberOfTapsRequired="1"/>
+                </Frame.GestureRecognizers>
             </Frame>
-            <Frame>
+            <Frame
+                HeightRequest="200"
+                BackgroundColor="#272729"
+                Margin="0,0,0,5"
+                BorderColor="red">
+                <Grid ColumnDefinitions=".5*,.5*">
+                    <Label 
+                        Text="Weapons"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="32"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        Grid.Column="0"/>   
+                    <Grid Grid.Column="1" >
+                        <Image Source="Images/Weapons/weaponsbackground.svg" Aspect="Fill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Image Source="Images/Weapons/weapons.png" Aspect="Fill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                    </Grid>
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToWeaponsPageCommand}" NumberOfTapsRequired="1"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame
+                HeightRequest="200"
+                BackgroundColor="#272729"
+                Margin="0,0,0,5"
+                BorderColor="red">
+                <Grid ColumnDefinitions=".5*,.5*">
+                    <Label 
+                        Text="Maps"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="32"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        Grid.Column="0"/>
+                    <Grid Grid.Column="1" >
+                        <Image Source="Images/Maps/mapsbackground.svg" Aspect="Fill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Image Source="Images/Maps/ascent.png" Aspect="Fill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                    </Grid>
+                </Grid>
+            </Frame>
+            <!--<Frame>
 
             </Frame>
             <Frame>
@@ -19,13 +97,7 @@
             </Frame>
             <Frame>
 
-            </Frame>
-            <Frame>
-
-            </Frame>
-            <Frame>
-
-            </Frame>
+            </Frame>-->
         </StackLayout>
     </ScrollView>
 </ContentPage>

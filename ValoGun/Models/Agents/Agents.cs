@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ValoGun.Models
+namespace ValoGun.Models.Agents
 {
-	public class SkinsToShow
+	public partial class Agents
 	{
-		public string img { get; set; }
-		public string displayName { get; set; }
+		public Data[] data { get; set; }
 	}
 }

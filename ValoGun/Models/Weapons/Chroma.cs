@@ -1,4 +1,4 @@
-﻿namespace ValoGun.Models
+﻿namespace ValoGun.Models.Weapons
 {
         public class Chroma
         {

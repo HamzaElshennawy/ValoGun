@@ -4,7 +4,7 @@
              x:Class="ValoGun.Pages.WeaponSkinsPage"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              x:DataType="viewmodels:WeaponStatusViewModel"
-             xmlns:model="clr-namespace:ValoGun.Models"
+             xmlns:model="clr-namespace:ValoGun.Models.Weapons"
              Title="{Binding Title}">
 
     <CollectionView ItemsSource="{Binding Skins}" SelectionMode="None"

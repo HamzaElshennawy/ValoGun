@@ -7,7 +7,9 @@ namespace ValoGun
 		public AppShell()
 		{
 			InitializeComponent();
-			Routing.RegisterRoute(nameof(WeaponStatusPage), typeof(WeaponStatusPage));
+			Routing.RegisterRoute(nameof(WeaponSkinsPage), typeof(WeaponSkinsPage));
+			Routing.RegisterRoute(nameof(WeaponsPage), typeof(WeaponsPage));
+			Routing.RegisterRoute(nameof(AgentsPage), typeof(AgentsPage));
 		}
 	}
 }
