@@ -4,7 +4,8 @@
              x:Class="ValoGun.Pages.AgentsPage"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              xmlns:model="clr-namespace:ValoGun.Models.Agents"
-             Title="AgentsPage">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="Agents">
     <ContentPage.BindingContext>
         <viewmodels:AgentsPageViewModel/>
     </ContentPage.BindingContext>
@@ -19,7 +20,7 @@
                     Margin="7,5"
                     HeightRequest="450"
                     BackgroundColor="#141E29"
-                    BorderColor="red"
+                    BorderColor="#A1A1A1"
                     >
                     <Grid RowDefinitions="0.1*,0.9*">
                         <Label 
@@ -46,6 +47,9 @@
                             >
                         </Image>
                     </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:AgentsPageViewModel}}, Path=NavigateToAgentCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>

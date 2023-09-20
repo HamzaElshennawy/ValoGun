@@ -1,10 +1,12 @@
-﻿using MvvmHelpers;
+﻿using CommunityToolkit.Mvvm.Input;
+using MvvmHelpers;
 using Newtonsoft.Json;
 using ValoGun.Models.Agents;
+using ValoGun.Pages;
 
 namespace ValoGun.ViewModels
 {
-	public class AgentsPageViewModel : BaseViewModel
+	public partial class AgentsPageViewModel : BaseViewModel
 	{
 		public Agents agents { get; set; }
 
@@ -34,6 +36,14 @@ namespace ValoGun.ViewModels
 			await MainThread.InvokeOnMainThreadAsync(() => _Agents = AgentsLoading);
 			//await MainThread.InvokeOnMainThreadAsync(() => _Agents.OrderBy(x => x.displayName));
 			await MainThread.InvokeOnMainThreadAsync(()=> OnPropertyChanged(nameof(_Agents)));
+		}
+
+
+		[RelayCommand]
+		public async Task NavigateToAgent(Data agent)
+		{
+			AgentDetailsViewModel.MainAgent = agent;
+			await Shell.Current.GoToAsync($"{nameof(AgentDetailsPage)}",true);
 		}
 	}
 }
