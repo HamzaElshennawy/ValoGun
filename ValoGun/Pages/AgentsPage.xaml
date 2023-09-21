@@ -5,48 +5,72 @@
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              xmlns:model="clr-namespace:ValoGun.Models.Agents"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             BackgroundColor="#FF4656"
+             BackgroundColor="#141E29"
+             Shell.BackgroundColor="#141E29"
              Title="Agents">
     <ContentPage.BindingContext>
         <viewmodels:AgentsPageViewModel/>
     </ContentPage.BindingContext>
-    <!--<CollectionView 
+    <CollectionView 
         ItemsSource="{Binding _Agents}"
         ItemsLayout="VerticalGrid, 2"
         >
-        
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Data">
                 <Frame 
                     Margin="7,5"
+                    Padding="0"
                     HeightRequest="450"
                     BackgroundColor="#141E29"
-                    BorderColor="#A1A1A1"
+                    BorderColor="#2F455C"
+                    
                     >
-                    <Grid RowDefinitions="0.1*,0.9*">
-                        <Label 
-                            Grid.Row="0"
-                            Text="{Binding displayName}"
-                            HorizontalOptions="Center"
-                            FontSize="28"
-                            FontFamily="BowlbyRegular"
-                            TextColor="#FFFFFF"
-                            VerticalOptions="Center"
-                            />
+                    
+                    <Grid RowDefinitions="0.8*,0.1*">
+                        
                         <Image
                             Source="{Binding background}"
-                            Grid.Row="1"
+                            Grid.Row="0"
                             Grid.RowSpan="2"
                             Aspect="AspectFill"
                             />
                         <Image 
                             Source="{Binding fullPortraitV2}"
-                            Grid.Row="1"
+                            Grid.Row="0"
                             Grid.RowSpan="2"
                             Aspect="AspectFill"
                             BackgroundColor="Transparent"
                             >
                         </Image>
+                        <Frame 
+                            Grid.Row="1"
+                            Margin="0,-0,0,0"
+                            BackgroundColor="#0F1B28"
+                            Padding="0"
+                            BorderColor="#2F455C"
+                            >
+                            <Grid ColumnDefinitions=".3*,.7*" Grid.Row="1">
+                                <Image 
+                                    Source="{Binding role.displayIcon}"
+                                    Margin="5"
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Aspect="AspectFit"
+                                    BackgroundColor="Transparent"
+                                    />
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="{Binding displayName}"
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="18"
+                                    LineBreakMode="NoWrap"
+                                    FontFamily="BowlbyRegular"
+                                    TextColor="#FFFFFF"
+                                    VerticalOptions="Center"
+                                    />
+                            </Grid>
+                        </Frame>
                     </Grid>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:AgentsPageViewModel}}, Path=NavigateToAgentCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>
@@ -54,49 +78,6 @@
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
-    </CollectionView>-->
-    <ScrollView>
-        <Grid RowDefinitions=".2*,.6*,.1*,.1*">
-            <Label
-                Grid.Row="0"
-                Text="Agents"
-                HorizontalOptions="Start"
-                FontSize="72"
-                Margin="35,20,0,0"
-                />
-            <CollectionView
-                ItemsSource="{Binding _Agents}"
-                Grid.Row="1"
-                ItemsLayout="HorizontalList"
-                
-                >
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Data">
-                        <Frame
-                            VerticalOptions="CenterAndExpand"
-                            Margin="10"
-                            HeightRequest="550"
-                            WidthRequest="300"
-                            BackgroundColor="#1F2326">
-                            <Grid>
-                                <Image
-                                    Source="{Binding fullPortraitV2}"
-                                    Aspect="AspectFill"
-                                    />
-                                <Label 
-                                    Text="{Binding displayName}"
-                                    HorizontalOptions="StartAndExpand"
-                                    VerticalOptions="CenterAndExpand"
-                                    FontSize="28"
-                                    FontFamily="BowlbyRegular"
-                                    TextColor="#FFF"
-                                    RotationY="90"
-                                    />
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </ScrollView>
+    </CollectionView>
+    
 </ContentPage>
