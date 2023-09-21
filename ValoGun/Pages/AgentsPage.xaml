@@ -5,11 +5,12 @@
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              xmlns:model="clr-namespace:ValoGun.Models.Agents"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="#FF4656"
              Title="Agents">
     <ContentPage.BindingContext>
         <viewmodels:AgentsPageViewModel/>
     </ContentPage.BindingContext>
-    <CollectionView 
+    <!--<CollectionView 
         ItemsSource="{Binding _Agents}"
         ItemsLayout="VerticalGrid, 2"
         >
@@ -53,5 +54,49 @@
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
-    </CollectionView>
+    </CollectionView>-->
+    <ScrollView>
+        <Grid RowDefinitions=".2*,.6*,.1*,.1*">
+            <Label
+                Grid.Row="0"
+                Text="Agents"
+                HorizontalOptions="Start"
+                FontSize="72"
+                Margin="35,20,0,0"
+                />
+            <CollectionView
+                ItemsSource="{Binding _Agents}"
+                Grid.Row="1"
+                ItemsLayout="HorizontalList"
+                
+                >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Data">
+                        <Frame
+                            VerticalOptions="CenterAndExpand"
+                            Margin="10"
+                            HeightRequest="550"
+                            WidthRequest="300"
+                            BackgroundColor="#1F2326">
+                            <Grid>
+                                <Image
+                                    Source="{Binding fullPortraitV2}"
+                                    Aspect="AspectFill"
+                                    />
+                                <Label 
+                                    Text="{Binding displayName}"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    FontSize="28"
+                                    FontFamily="BowlbyRegular"
+                                    TextColor="#FFF"
+                                    RotationY="90"
+                                    />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
 </ContentPage>
