@@ -31,6 +31,7 @@ namespace ValoGun.ViewModels
 			var dataSorted = jsonData.data.OrderBy(x => x.displayName);
 			foreach(var agent in dataSorted)
 			{
+				
 				AgentsLoading.Add(agent);
 			}
 			await MainThread.InvokeOnMainThreadAsync(() => _Agents = AgentsLoading);

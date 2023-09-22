@@ -11,9 +11,14 @@
     <ContentPage.BindingContext>
         <viewmodels:AgentsPageViewModel/>
     </ContentPage.BindingContext>
+    
+
     <CollectionView 
         ItemsSource="{Binding _Agents}"
         ItemsLayout="VerticalGrid, 2"
+        SelectionMode="None"
+        BackgroundColor="#141E29"
+        
         >
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Data">
@@ -25,9 +30,9 @@
                     BorderColor="#2F455C"
                     
                     >
-                    
+
                     <Grid RowDefinitions="0.8*,0.1*">
-                        
+
                         <Image
                             Source="{Binding background}"
                             Grid.Row="0"
@@ -35,7 +40,7 @@
                             Aspect="AspectFill"
                             />
                         <Image 
-                            Source="{Binding fullPortraitV2}"
+                            Source="{Binding fullPortrait}"
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Aspect="AspectFill"
@@ -79,5 +84,6 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
+    
     
 </ContentPage>

@@ -7,15 +7,11 @@
 		public string description { get; set; }
 		public string developerName { get; set; }
 		public string[] characterTags { get; set; }
-		public string displayIcon { get; set; }
-		public string displayIconSmall { get; set; }
-		public string bustPortrait { get; set; }
 		public string fullPortrait { get; set; }
-		public string fullPortraitV2 { get; set; }
-		public string killfeedPortrait { get; set; }
+		public Image portrait { get; set; }
+		public Image Background { get; set; }
 		public string background { get; set; }
 		public string[] backgroundGradientColors { get; set; }
-		public string assetPath { get; set; }
 		public bool isFullPortraitRightFacing { get; set; }
 		public bool isPlayableCharacter { get; set; }
 		public bool isAvailableForTest { get; set; }
