@@ -15,7 +15,6 @@
 
     <CollectionView 
         ItemsSource="{Binding _Agents}"
-        ItemsLayout="VerticalGrid, 2"
         SelectionMode="None"
         BackgroundColor="#141E29"
         
@@ -34,13 +33,14 @@
                     <Grid RowDefinitions="0.8*,0.1*">
 
                         <Image
-                            Source="{Binding background}"
+                            Source="{Binding Background}"
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Aspect="AspectFill"
+                            
                             />
                         <Image 
-                            Source="{Binding fullPortrait}"
+                            Source="{Binding portrait}"
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Aspect="AspectFill"
@@ -61,7 +61,6 @@
                                     Grid.Column="0"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    Aspect="AspectFit"
                                     BackgroundColor="Transparent"
                                     />
                                 <Label 

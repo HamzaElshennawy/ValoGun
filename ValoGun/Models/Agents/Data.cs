@@ -8,8 +8,8 @@
 		public string developerName { get; set; }
 		public string[] characterTags { get; set; }
 		public string fullPortrait { get; set; }
-		public Image portrait { get; set; }
-		public Image Background { get; set; }
+		public string portrait { get; set; }
+		public string Background { get; set; }
 		public string background { get; set; }
 		public string[] backgroundGradientColors { get; set; }
 		public bool isFullPortraitRightFacing { get; set; }
