@@ -17,10 +17,10 @@
         ItemsSource="{Binding _Agents}"
         SelectionMode="None"
         BackgroundColor="#141E29"
-        
+        ItemsLayout="VerticalGrid, 2"
         >
         <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:Data">
+            <DataTemplate >
                 <Frame 
                     Margin="7,5"
                     Padding="0"
@@ -30,24 +30,43 @@
                     
                     >
 
-                    <Grid RowDefinitions="0.8*,0.1*">
-
-                        <Image
-                            Source="{Binding Background}"
-                            Grid.Row="0"
-                            Grid.RowSpan="2"
-                            Aspect="AspectFill"
-                            
-                            />
-                        <Image 
-                            Source="{Binding portrait}"
-                            Grid.Row="0"
-                            Grid.RowSpan="2"
-                            Aspect="AspectFill"
-                            BackgroundColor="Transparent"
+                    <Grid RowDefinitions="0.1*,0.9*">
+                        <Label 
+                            Text="{Binding displayName}"
+                            FontSize="40"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            TextColor="#A1A1A1"
                             >
+                            
+                        </Label>
+                        <Image
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            HeightRequest="450"
+                            WidthRequest="450"
+                            >
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding background}"
+                                                CachingEnabled="True"
+                                                />
+                            </Image.Source>
                         </Image>
-                        <Frame 
+                        <Image 
+                            
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            BackgroundColor="Transparent"
+                            HeightRequest="450"
+                            WidthRequest="450"
+                            >
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding fullPortrait}"
+                                                CachingEnabled="True"
+                                                />
+                            </Image.Source>
+                        </Image>
+                        <!--<Frame 
                             Grid.Row="1"
                             Margin="0,-0,0,0"
                             BackgroundColor="#0F1B28"
@@ -74,7 +93,7 @@
                                     VerticalOptions="Center"
                                     />
                             </Grid>
-                        </Frame>
+                        </Frame>-->
                     </Grid>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:AgentsPageViewModel}}, Path=NavigateToAgentCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>
