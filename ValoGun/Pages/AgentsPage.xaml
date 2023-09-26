@@ -14,86 +14,93 @@
     
 
     <CollectionView 
-        ItemsSource="{Binding _Agents}"
+        ItemsSource="{Binding GAgents}"
         SelectionMode="None"
         BackgroundColor="#141E29"
-        ItemsLayout="VerticalGrid, 2"
+        VerticalScrollBarVisibility="Never"
+        IsGrouped="True"
         >
+        <CollectionView.GroupHeaderTemplate>
+
+            <DataTemplate >
+                <!--<Line HeightRequest="2" BackgroundColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="600"/>-->
+                <Frame 
+                    Padding="0" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand" 
+                    HeightRequest="40" 
+                    WidthRequest="200"
+                    BackgroundColor="#5D5D63"
+                    
+                    >
+                    <Grid ColumnDefinitions=".2*,.8*">
+                        <Image 
+                            Source="{Binding Items[0].role.displayIcon}"
+                            HorizontalOptions="CenterAndExpand"
+                            Margin="10,0,0,0"
+                            />
+                        <Label 
+                            Grid.Column="1"
+                            FontSize="22"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            FontAttributes="Bold"
+                            TextColor="#F2F2F3"
+                            FontAutoScalingEnabled="True"
+                            Text="{Binding Key}" />
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
         <CollectionView.ItemTemplate>
             <DataTemplate >
                 <Frame 
-                    Margin="7,5"
+                    Margin="30,5"
                     Padding="0"
                     HeightRequest="450"
                     BackgroundColor="#141E29"
                     BorderColor="#2F455C"
+                    IsClippedToBounds="True"
                     
                     >
 
-                    <Grid RowDefinitions="0.1*,0.9*">
+                    <Grid RowDefinitions="0.1*,0.9*" ColumnDefinitions=".5*,.5*">
                         <Label 
                             Text="{Binding displayName}"
                             FontSize="40"
                             HorizontalOptions="CenterAndExpand"
                             VerticalOptions="CenterAndExpand"
                             TextColor="#A1A1A1"
+                            Grid.ColumnSpan="2"
                             >
                             
                         </Label>
                         <Image
+                            Source="{Binding Background}"
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             HeightRequest="450"
                             WidthRequest="450"
-                            >
-                            <Image.Source>
-                                <UriImageSource Uri="{Binding background}"
-                                                CachingEnabled="True"
-                                                />
-                            </Image.Source>
-                        </Image>
+                            />
+                        <Image
+                            Source="{Binding Background}"
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            HeightRequest="450"
+                            WidthRequest="450"
+                            />
+
                         <Image 
-                            
+                            Source="{Binding portrait}"
                             Grid.Row="0"
                             Grid.RowSpan="2"
+                            Grid.ColumnSpan="2"
                             BackgroundColor="Transparent"
-                            HeightRequest="450"
-                            WidthRequest="450"
-                            >
-                            <Image.Source>
-                                <UriImageSource Uri="{Binding fullPortrait}"
-                                                CachingEnabled="True"
-                                                />
-                            </Image.Source>
-                        </Image>
-                        <!--<Frame 
-                            Grid.Row="1"
-                            Margin="0,-0,0,0"
-                            BackgroundColor="#0F1B28"
-                            Padding="0"
-                            BorderColor="#2F455C"
-                            >
-                            <Grid ColumnDefinitions=".3*,.7*" Grid.Row="1">
-                                <Image 
-                                    Source="{Binding role.displayIcon}"
-                                    Margin="5"
-                                    Grid.Column="0"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="Transparent"
-                                    />
-                                <Label 
-                                    Grid.Column="1"
-                                    Text="{Binding displayName}"
-                                    HorizontalOptions="CenterAndExpand"
-                                    FontSize="18"
-                                    LineBreakMode="NoWrap"
-                                    FontFamily="BowlbyRegular"
-                                    TextColor="#FFFFFF"
-                                    VerticalOptions="Center"
-                                    />
-                            </Grid>
-                        </Frame>-->
+                            HeightRequest="500"
+                            WidthRequest="500"
+                            />
                     </Grid>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:AgentsPageViewModel}}, Path=NavigateToAgentCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>

@@ -22,8 +22,22 @@
                     Margin="10"
                     HeightRequest="400"
                     VerticalOptions="StartAndExpand">
-                    <Image Source="{Binding BindableAgent.fullPortraitV2}"/>
+                    <Image Source="{Binding BindableAgent.portrait}"/>
                 </Frame>
+            </StackLayout>
+            <StackLayout>
+                <TableView Intent="Data" HasUnevenRows="True">
+                    <TableRoot>
+                        <TableSection Title="Abilities" TextColor="White">
+                            <TextCell Text="{Binding BindableAgent.abilities[0].displayName}"
+                                      TextColor="Wheat"/>
+                        </TableSection>
+                        <TableSection Title="Disc" TextColor="White">
+                            <TextCell Text="{Binding BindableAgent.abilities[1].displayName}"
+                                      TextColor="Wheat"/>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
             </StackLayout>
         </StackLayout>
     </ScrollView>

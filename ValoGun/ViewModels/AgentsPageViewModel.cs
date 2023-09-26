@@ -11,14 +11,10 @@ namespace ValoGun.ViewModels
 		public Agents agents { get; set; }
 
 		public ObservableRangeCollection<Data> _Agents { get; set; }
-		private ObservableRangeCollection<Data> AgentsLoading;
-
+		public ObservableRangeCollection<Grouping<string, Data>> GAgents { get; set; } = new();
 		public AgentsPageViewModel()
 		{
 			_Agents = [];
-			AgentsLoading = [];
-			//Thread ReadAgentsThread = new Thread(async () => await ReadAgents());
-			//ReadAgentsThread.Start();
 			Task.Run(ReadAgents);
 		}
 
@@ -30,26 +26,28 @@ namespace ValoGun.ViewModels
 			var jsonData = JsonConvert.DeserializeObject<Agents>(data);
 			_Agents.Clear();
 			var dataSorted = jsonData.data.OrderBy(x => x.displayName);
-			//foreach (var agent in dataSorted)
-			//{
-			//	//string lowerName = agent.displayName.ToLower();
-			//	//if (agent.displayName == "KAY/O")
-			//	//{
-			//	//	lowerName = "kayo";
-			//	//}
-			//	//for (int i = 0; i < agent.abilities.Length; i++)
-			//	//{
-			//	//	agent.abilities[i].DisplayIcon = $"{lowerName}displayicon{i + 1}.png";
-			//	//}
-			//	//agent.portrait = $"{lowerName}fullportrait.png";
-			//	//agent.Background = $"{lowerName}background.png";
-			//	//AgentsLoading.Add(agent);
-			//	AgentsLoading.Add(agent);
-			//}
-			_Agents.AddRange(dataSorted);
-			//await MainThread.InvokeOnMainThreadAsync(() => _Agents = AgentsLoading);
-			//await MainThread.InvokeOnMainThreadAsync(() => OnPropertyChanged(nameof(_Agents)));
-			//return Task.CompletedTask;
+			foreach (var agent in dataSorted)
+			{
+				string lowerName = agent.displayName.ToLower();
+				if (agent.displayName == "KAY/O")
+				{
+					lowerName = "kayo";
+				}
+				for (int i = 0; i < agent.abilities.Length; i++)
+				{
+					agent.abilities[i].DisplayIcon = $"{lowerName}displayicon{i + 1}.png";
+				}
+				agent.portrait = $"{lowerName}fullportrait.png";
+				agent.Background = $"{lowerName}background.png";
+				_Agents.Add(agent);
+				//AgentsLoading.Add(agent);
+			}
+			GAgents.Add(new Grouping<string, Data>("Controllers", _Agents.Where(c => c.role.displayName == "Controller").OrderBy((w) => w.displayName)));
+			GAgents.Add(new Grouping<string, Data>("Duelists", _Agents.Where(c => c.role.displayName == "Duelist").OrderBy((w) => w.displayName)));
+			GAgents.Add(new Grouping<string, Data>("Sentinels", _Agents.Where(c => c.role.displayName == "Sentinel").OrderBy((w) => w.displayName)));
+			GAgents.Add(new Grouping<string, Data>("Initiators", _Agents.Where(c => c.role.displayName == "Initiator").OrderBy((w) => w.displayName)));
+			OnPropertyChanged(nameof(_Agents));
+			
 		}
 
 
