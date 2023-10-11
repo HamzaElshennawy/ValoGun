@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <None Remove="Agents.json" />
+	  <None Remove="google-services.json" />
 	  <None Remove="Images\Agents\agentbackground.svg" />
 	  <None Remove="Images\Agents\Agents.png" />
 	  <None Remove="Images\Agents\background1.png" />
@@ -65,6 +66,7 @@
 	  <None Remove="Images\Maps\mapsbackground.svg" />
 	  <None Remove="Images\Weapons\Weapons.png" />
 	  <None Remove="Images\Weapons\weaponsbackground.svg" />
+	  <None Remove="Platforms\Android\Resources\values\strings.xml" />
 	  <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
 	  <None Remove="Resources\Raw\Odin.json" />
 	  <None Remove="Resources\Raw\Vandal.json" />
@@ -78,6 +80,10 @@
 	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon4.png" />
 	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon5.png" />
 	  <EmbeddedResource Include="weapons.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <GoogleServicesJson Include="google-services.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -223,10 +229,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-rc.1.9171" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.0-rc.1.9171" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-rc.2.9373" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.0-rc.2.9373" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 		<PackageReference Include="Wasi.Sdk" Version="0.1.4-preview.10020" />
@@ -257,6 +263,12 @@
 	  <MauiXaml Update="Pages\WeaponSkinsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	  <PackageReference Include="Xamarin.Firebase.Crashlytics">
+	    <Version>118.3.7.2</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 	<!-- Build Properties must be defined within these property groups to ensure successful publishing

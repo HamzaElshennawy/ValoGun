@@ -38,6 +38,7 @@
                             Source="{Binding Items[0].role.displayIcon}"
                             HorizontalOptions="CenterAndExpand"
                             Margin="10,0,0,0"
+                            HeightRequest="35"
                             />
                         <Label 
                             Grid.Column="1"

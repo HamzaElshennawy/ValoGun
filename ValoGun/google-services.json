@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137815010263",
+    "project_id": "valoguncrashlist",
+    "storage_bucket": "valoguncrashlist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137815010263:android:0ae66812a25c7ee8b33992",
+        "android_client_info": {
+          "package_name": "com.companyname.valogun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByFbKVM7EvRuevmlJBwk4J636suvYYN3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

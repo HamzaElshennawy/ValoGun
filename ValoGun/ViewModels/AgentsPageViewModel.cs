@@ -47,6 +47,7 @@ namespace ValoGun.ViewModels
 			GAgents.Add(new Grouping<string, Data>("Sentinels", _Agents.Where(c => c.role.displayName == "Sentinel").OrderBy((w) => w.displayName)));
 			GAgents.Add(new Grouping<string, Data>("Initiators", _Agents.Where(c => c.role.displayName == "Initiator").OrderBy((w) => w.displayName)));
 			OnPropertyChanged(nameof(_Agents));
+			OnPropertyChanged(nameof(GAgents));
 			
 		}
 

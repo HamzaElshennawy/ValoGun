@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui;
 using ValoGun.Pages;
 
+
 namespace ValoGun
 {
     public static class MauiProgram
@@ -20,6 +21,9 @@ namespace ValoGun
 			builder.Services.AddSingleton<WeaponsPage>();
 			builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<AgentsPage>();
+
+
+
             return builder.Build();
         }
     }
