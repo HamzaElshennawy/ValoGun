@@ -11,10 +11,13 @@ namespace ValoGun.ViewModels
 		public Agents agents { get; set; }
 
 		public ObservableRangeCollection<Data> _Agents { get; set; }
+		public ObservableRangeCollection<AgentToView> _AgentsToView { get; set; }
 		public ObservableRangeCollection<Grouping<string, Data>> GAgents { get; set; } = new();
+		public ObservableRangeCollection<Grouping<string, AgentToView>> GAgentsToView { get; set; } = new();
 		public AgentsPageViewModel()
 		{
 			_Agents = [];
+			_AgentsToView = [];
 			Task.Run(ReadAgents);
 		}
 
@@ -40,14 +43,28 @@ namespace ValoGun.ViewModels
 				agent.portrait = $"{lowerName}fullportrait.png";
 				agent.Background = $"{lowerName}background.png";
 				_Agents.Add(agent);
+
+
+				AgentToView tempAgent = new();
+				tempAgent.uuid = agent.uuid;
+				tempAgent.displayName = agent.displayName;
+				tempAgent.displayIcon = agent.displayIcon;
+				tempAgent.background = agent.background;
+				tempAgent.role = agent.role.displayName;
+				_AgentsToView.Add(tempAgent);
 				//AgentsLoading.Add(agent);
 			}
-			GAgents.Add(new Grouping<string, Data>("Controllers", _Agents.Where(c => c.role.displayName == "Controller").OrderBy((w) => w.displayName)));
-			GAgents.Add(new Grouping<string, Data>("Duelists", _Agents.Where(c => c.role.displayName == "Duelist").OrderBy((w) => w.displayName)));
-			GAgents.Add(new Grouping<string, Data>("Sentinels", _Agents.Where(c => c.role.displayName == "Sentinel").OrderBy((w) => w.displayName)));
-			GAgents.Add(new Grouping<string, Data>("Initiators", _Agents.Where(c => c.role.displayName == "Initiator").OrderBy((w) => w.displayName)));
+			//GAgents.Add(new Grouping<string, Data>("Controllers", _Agents.Where(c => c.role.displayName == "Controller").OrderBy((w) => w.displayName)));
+			//GAgents.Add(new Grouping<string, Data>("Duelists", _Agents.Where(c => c.role.displayName == "Duelist").OrderBy((w) => w.displayName)));
+			//GAgents.Add(new Grouping<string, Data>("Sentinels", _Agents.Where(c => c.role.displayName == "Sentinel").OrderBy((w) => w.displayName)));
+			//GAgents.Add(new Grouping<string, Data>("Initiators", _Agents.Where(c => c.role.displayName == "Initiator").OrderBy((w) => w.displayName)));
+			GAgentsToView.Add(new Grouping<string, AgentToView>("Controllers", _AgentsToView.Where(c => c.role == "Controller").OrderBy((w) => w.displayName)));
+			GAgentsToView.Add(new Grouping<string, AgentToView>("Duelists", _AgentsToView.Where(c => c.role == "Duelist").OrderBy((w) => w.displayName)));
+			GAgentsToView.Add(new Grouping<string, AgentToView>("Sentinels", _AgentsToView.Where(c => c.role == "Sentinel").OrderBy((w) => w.displayName)));
+			GAgentsToView.Add(new Grouping<string, AgentToView>("Initiators", _AgentsToView.Where(c => c.role == "Initiator").OrderBy((w) => w.displayName)));
 			OnPropertyChanged(nameof(_Agents));
 			OnPropertyChanged(nameof(GAgents));
+			OnPropertyChanged(nameof(_AgentsToView));
 			
 		}
 

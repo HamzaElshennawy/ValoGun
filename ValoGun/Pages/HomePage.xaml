@@ -14,99 +14,99 @@
             Spacing="5">
             <Grid ColumnDefinitions=".5*,.5*">
                 
-            <Frame 
-                Grid.Column="0"
-                HeightRequest="200"
-                BackgroundColor="#272729"
-                Margin="10,0"
-                BorderColor="#FFFFFF">
-                <Grid ColumnDefinitions=".5*,.5*"
-                IsClippedToBounds="False">
-                    <Image 
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Aspect="AspectFill"
-                        Margin="-10"
-                        Source="Images/Agents/background1.png"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        />
-                    <Label 
-                        Text="Agents"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        VerticalOptions="Center"
-                        VerticalTextAlignment="Center"
-                        FontSize="32"
-                        TextColor="#FFFFFF"
-                        FontAttributes="Bold"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"/>
-                    <Grid Grid.Column="1" >
-                        
-                        <!--<Image 
-                            Source="Images/Agents/agents.svg"
-                            WidthRequest="180"
-                            HeightRequest="180"
-                            HorizontalOptions="EndAndExpand"
-                            VerticalOptions="CenterAndExpand"
-                            />-->
-
-                    </Grid>
-                </Grid>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToAgentsPageCommand}" NumberOfTapsRequired="1"/>
-                </Frame.GestureRecognizers>
-            </Frame>
-            <Frame
-                Grid.Column="1"
-                HeightRequest="200"
-                BackgroundColor="#272729"
-                Margin="10"
-                BorderColor="#FFFFFF">
-                <Grid ColumnDefinitions=".5*,.5*">
+                <Frame 
+                    Grid.Column="0"
+                    HeightRequest="200"
+                    BackgroundColor="#272729"
+                    Margin="10,0"
+                    BorderColor="#FFFFFF">
+                    <Grid ColumnDefinitions=".5*,.5*"
+                    IsClippedToBounds="False">
                         <Image 
-    Grid.Column="0"
-    Grid.ColumnSpan="2"
-    Aspect="AspectFill"
-    Margin="-10"
-    Source="Images/Agents/background1.png"
-    HorizontalOptions="CenterAndExpand"
-    VerticalOptions="CenterAndExpand"
-    />
-                        <Label 
-                        Text="Weapons"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        VerticalOptions="Center"
-                        VerticalTextAlignment="Center"
-                        FontSize="32"
-                        TextColor="#FFFFFF"
-                        FontAttributes="Bold"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"/>
-                    <!--<Grid Grid.Column="1" >
-                        <Image 
-                            Source="Images/Weapons/weaponsbackground.svg"
-                            HorizontalOptions="EndAndExpand"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Aspect="AspectFill"
+                            Margin="-10"
+                            Source="Images/Agents/background1.png"
+                            HorizontalOptions="CenterAndExpand"
                             VerticalOptions="CenterAndExpand"
-                            WidthRequest="180"
-                            HeightRequest="180"
                             />
-                        <Image
-                            Source="Images/Weapons/weapons.png"
-                            Aspect="Fill"
-                            HorizontalOptions="EndAndExpand"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="180"
-                            HeightRequest="180"/>
+                        <Label 
+                            Text="Agents"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center"
+                            FontSize="32"
+                            TextColor="#FFFFFF"
+                            FontAttributes="Bold"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"/>
+                        <Grid Grid.Column="1" >
+                        
+                            <!--<Image 
+                                Source="Images/Agents/agents.svg"
+                                WidthRequest="180"
+                                HeightRequest="180"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                />-->
 
-                    </Grid>-->
-                </Grid>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToWeaponsPageCommand}" NumberOfTapsRequired="1"/>
-                </Frame.GestureRecognizers>
-            </Frame>
+                        </Grid>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToAgentsPageCommand}" NumberOfTapsRequired="1"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame
+                    Grid.Column="1"
+                    HeightRequest="200"
+                    BackgroundColor="#272729"
+                    Margin="10"
+                    BorderColor="#FFFFFF">
+                    <Grid ColumnDefinitions=".5*,.5*">
+                            <Image 
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Aspect="AspectFill"
+                                Margin="-10"
+                                Source="Images/Agents/background1.png"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                />  
+                            <Label 
+                                Text="Weapons"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center"
+                                FontSize="32"
+                                TextColor="#FFFFFF"
+                                FontAttributes="Bold"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"/>
+                        <!--<Grid Grid.Column="1" >
+                            <Image 
+                                Source="Images/Weapons/weaponsbackground.svg"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="180"
+                                HeightRequest="180"
+                                />
+                            <Image
+                                Source="Images/Weapons/weapons.png"
+                                Aspect="Fill"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="180"
+                                HeightRequest="180"/>
+
+                        </Grid>-->
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToWeaponsPageCommand}" NumberOfTapsRequired="1"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
             </Grid>
             <Frame
                 HeightRequest="200"
@@ -144,18 +144,80 @@
                     </Grid>
                 </Grid>
             </Frame>
-            <!--<Frame>
+            <Grid ColumnDefinitions=".5*,.5*">
+                <Frame 
+                    Grid.Column="0"
+                    HeightRequest="200"
+                    BackgroundColor="#272729"
+                    Margin="10,0"
+                    BorderColor="#FFFFFF">
+                    <Grid 
+                        ColumnDefinitions=".5*,.5*"
+                        IsClippedToBounds="False">
+                        <Image 
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Aspect="AspectFill"
+                            Margin="-10"
+                            Source="Images/HomeScreen/ranks.png"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            />
+                        <Label 
+                            Text="RANKS"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center"
+                            FontSize="32"
+                            TextColor="#FFFFFF"
+                            FontAttributes="Bold"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"/>
+                        
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToAgentsPageCommand}" NumberOfTapsRequired="1"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame 
+                    Grid.Column="1"
+                    HeightRequest="200"
+                    BackgroundColor="#272729"
+                    Margin="10,0"
+                    BorderColor="#FFFFFF">
+                    <Grid 
+                        ColumnDefinitions=".5*,.5*"
+                        IsClippedToBounds="False">
+                        <Image 
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Aspect="AspectFill"
+                            Margin="-10"
+                            Source="Images/Agents/background1.png"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            />
+                        <Label 
+                            Text="SPRAYS"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center"
+                            FontSize="32"
+                            TextColor="#FFFFFF"
+                            FontAttributes="Bold"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"/>
 
-            </Frame>
-            <Frame>
-
-            </Frame>
-            <Frame>
-
-            </Frame>
-            <Frame>
-
-            </Frame>-->
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToAgentsPageCommand}" NumberOfTapsRequired="1"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+            
         </StackLayout>
     </ScrollView>
 </ContentPage>

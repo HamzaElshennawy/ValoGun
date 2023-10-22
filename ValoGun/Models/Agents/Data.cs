@@ -4,6 +4,7 @@
 	{
 		public string uuid { get; set; }
 		public string displayName { get; set; }
+		public string displayIcon { get; set; }
 		public string description { get; set; }
 		public string developerName { get; set; }
 		public string[] characterTags { get; set; }
