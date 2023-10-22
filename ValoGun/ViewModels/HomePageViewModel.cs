@@ -56,27 +56,31 @@ namespace ValoGun.ViewModels
 
 
                 string data = reader.ReadToEnd();
-
+				await MainThread.InvokeOnMainThreadAsync(() => Weapons.Clear());
                 // Deserialize the JSON data into an object
                 var jsonData = JsonConvert.DeserializeObject<Weapons>(data);
                 foreach (var weapon in jsonData.data)
                 {
                     Weapons.Add(weapon);
-                    OnPropertyChanged(nameof(Weapons));
+                    //OnPropertyChanged(nameof(Weapons));
+
                 }
 
                 Weapons.OrderBy(c => c.shopData.cost);
 
 
-                GWeapons.Add(new Grouping<string, Datum>("Heavy", Weapons.Where(c => c.category == "Heavy").OrderBy((w) => w.shopData.cost)));
-                GWeapons.Add(new Grouping<string, Datum>("Sniper", Weapons.Where(c => c.category == "Sniper").OrderBy((w) => w.shopData.cost)));
-                GWeapons.Add(new Grouping<string, Datum>("Rifles", Weapons.Where(c => c.category == "Rifle").OrderBy((w) => w.shopData.cost)));
-                GWeapons.Add(new Grouping<string, Datum>("Shotgun", Weapons.Where(c => c.category == "Shotgun").OrderBy((w) => w.shopData.cost)));
-                GWeapons.Add(new Grouping<string, Datum>("SMG", Weapons.Where(c => c.category == "SMG").OrderBy((w) => w.shopData.cost)));
-                GWeapons.Add(new Grouping<string, Datum>("Sidearm", Weapons.Where(c => c.category == "Sidearm").OrderBy((w) => w.shopData.cost)));
-                GWeapons.Add(new Grouping<string, Datum>("Knife", Weapons.Where(c => c.category == "Melee")));
+                await MainThread.InvokeOnMainThreadAsync(() => GWeapons.Add(new Grouping<string, Datum>("Heavy", Weapons.Where(c => c.category == "Heavy").OrderBy((w) => w.shopData.cost))));
+                await MainThread.InvokeOnMainThreadAsync(() => GWeapons.Add(new Grouping<string, Datum>("Sniper", Weapons.Where(c => c.category == "Sniper").OrderBy((w) => w.shopData.cost))));
+                await MainThread.InvokeOnMainThreadAsync(() => GWeapons.Add(new Grouping<string, Datum>("Rifles", Weapons.Where(c => c.category == "Rifle").OrderBy((w) => w.shopData.cost))));
+                await MainThread.InvokeOnMainThreadAsync(() => GWeapons.Add(new Grouping<string, Datum>("Shotgun", Weapons.Where(c => c.category == "Shotgun").OrderBy((w) => w.shopData.cost))));
+                await MainThread.InvokeOnMainThreadAsync(() => GWeapons.Add(new Grouping<string, Datum>("SMG", Weapons.Where(c => c.category == "SMG").OrderBy((w) => w.shopData.cost))));
+                await MainThread.InvokeOnMainThreadAsync(() => GWeapons.Add(new Grouping<string, Datum>("Sidearm", Weapons.Where(c => c.category == "Sidearm").OrderBy((w) => w.shopData.cost))));
+				await MainThread.InvokeOnMainThreadAsync(() => GWeapons.Add(new Grouping<string, Datum>("Knife", Weapons.Where(c => c.category == "Melee"))));
 
-            }
+				await MainThread.InvokeOnMainThreadAsync(() =>OnPropertyChanged(nameof(GWeapons)));
+
+
+			}
             catch (Exception e)
             {
 
