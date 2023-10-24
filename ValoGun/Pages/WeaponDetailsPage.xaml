@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ValoGun.Pages.WeaponDetailsPage"
+             xmlns:model="clr-namespace:ValoGun.Models.Weapons"
+             xmlns:viewmodel="clr-namespace:ValoGun.ViewModels"
+             Title="{Binding SelectedWeapon.displayName}"
+             >
+    <ContentPage.BindingContext>
+        <viewmodel:WeaponDetailsViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout>
+            <Button 
+                Text="Show Skins"
+                FontSize="22"
+                HorizontalOptions="CenterAndExpand"
+                Margin="0,30,0,0"
+                TextColor="Black"
+                >
+                <Button.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#AAA" Offset="0.1"/>
+                        <GradientStop Color="#CCC" Offset="0.5"/>
+                        <GradientStop Color="#FFF" Offset="0.9"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <StackLayout>
+                <Frame 
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    HeightRequest="120">
+                    <Grid RowDefinitions=".5*,.5*">
+                        <!--<Label 
+                            Text="Name" 
+                            FontSize="28" 
+                            Grid.Column="0" 
+                            Grid.Row="0" 
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            
+                            />-->
+                        <Label 
+                            Text="{Binding SelectedWeapon.displayName}" 
+                            FontSize="42"  
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,0"
+                            />
+                    </Grid>
+                </Frame>
+                <Grid ColumnDefinitions=".5*,.5*">
+                    
+                    <Frame
+                        Margin="10"
+                        BackgroundColor="Transparent"
+                        HeightRequest="100"
+                        >
+                        <Grid RowDefinitions=".5*,.5*">
+                            <Label 
+                                Text="Category" 
+                                FontSize="22" 
+                                Grid.Column="0" 
+                                Grid.Row="0" 
+                                VerticalOptions="Center"
+                                Margin="0,0,0,0"
+                                HorizontalOptions="Center"
+                                />
+                            <Label 
+                                Text="{Binding SelectedWeapon.category}" 
+                                FontSize="22" 
+                                Grid.Column="1" 
+                                Grid.Row="1" 
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        BackgroundColor="Transparent"
+                        Margin="10"
+                        HeightRequest="100"
+                        Grid.Column="1"
+                        >
+                        <Grid RowDefinitions=".5*,.5*">
+
+                            <Label 
+                                Text="Coast" 
+                                FontSize="22" 
+                                Grid.Column="0" 
+                                Grid.Row="0" 
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Margin="0,0,0,0"
+                                />
+                            <Label 
+                                Text="{Binding SelectedWeapon.shopData.cost}" 
+                                FontSize="22" 
+                                Grid.Column="1" 
+                                Grid.Row="1" 
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+        
+    </ScrollView>
+</ContentPage>

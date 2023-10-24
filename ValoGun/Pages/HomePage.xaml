@@ -12,8 +12,10 @@
                 >
         <StackLayout
             Spacing="5">
+            <!--Agents and Weapons Frames-->
+
             <Grid ColumnDefinitions=".5*,.5*">
-                
+
                 <Frame 
                     Grid.Column="0"
                     HeightRequest="200"
@@ -43,7 +45,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="2"/>
                         <Grid Grid.Column="1" >
-                        
+
                             <!--<Image 
                                 Source="Images/Agents/agents.svg"
                                 WidthRequest="180"
@@ -65,7 +67,7 @@
                     Margin="10"
                     BorderColor="#FFFFFF">
                     <Grid ColumnDefinitions=".5*,.5*">
-                            <Image 
+                        <Image 
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 Aspect="AspectFill"
@@ -73,8 +75,8 @@
                                 Source="Images/Agents/background1.png"
                                 HorizontalOptions="CenterAndExpand"
                                 VerticalOptions="CenterAndExpand"
-                                />  
-                            <Label 
+                                />
+                        <Label 
                                 Text="Weapons"
                                 HorizontalOptions="Center"
                                 HorizontalTextAlignment="Center"
@@ -108,6 +110,8 @@
                     </Frame.GestureRecognizers>
                 </Frame>
             </Grid>
+
+            <!-- Maps Frame -->
             <Frame
                 HeightRequest="200"
                 BackgroundColor="#272729"
@@ -144,6 +148,7 @@
                     </Grid>
                 </Grid>
             </Frame>
+            <!-- Ranks and Sparys Frames-->
             <Grid ColumnDefinitions=".5*,.5*">
                 <Frame 
                     Grid.Column="0"
@@ -175,7 +180,7 @@
                             FontAttributes="Bold"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"/>
-                        
+
                     </Grid>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToAgentsPageCommand}" NumberOfTapsRequired="1"/>
@@ -217,7 +222,31 @@
                     </Frame.GestureRecognizers>
                 </Frame>
             </Grid>
-            
+            <Frame
+                HeightRequest="200"
+                BackgroundColor="#272729"
+                Margin="10"
+    
+                BorderColor="#FFFFFF"
+                IsClippedToBounds="False">
+                <Grid ColumnDefinitions=".5*,.5*">
+                    <Label 
+                        Text="Maps"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="50"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"/>
+                    <Grid Grid.Column="1" >
+                        
+
+                    </Grid>
+                </Grid>
+            </Frame>
         </StackLayout>
     </ScrollView>
 </ContentPage>

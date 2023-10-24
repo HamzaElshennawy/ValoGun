@@ -7,7 +7,7 @@
              BackgroundColor="#18181A">
 
     <ContentPage.BindingContext>
-        <viewmodels:HomePageViewModel/>
+        <viewmodels:WeaponsViewModel/>
     </ContentPage.BindingContext>
     <ScrollView>
         <CollectionView
@@ -53,7 +53,7 @@
                         VerticalOptions="StartAndExpand" 
                         BackgroundColor="#272729">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToPageCommand}" CommandParameter="{Binding .}"/>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:WeaponsViewModel}}, Path=GoToWeaponPageCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>
                         </Frame.GestureRecognizers>
                         <Grid RowDefinitions=".9*,.1*">
                             <Image Source="{Binding displayIcon}" 

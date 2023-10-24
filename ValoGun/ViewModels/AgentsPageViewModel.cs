@@ -11,10 +11,12 @@ namespace ValoGun.ViewModels
 		public Agents agents { get; set; }
 
 		public ObservableRangeCollection<AgentToView> _AgentsToView { get; set; }
+		public ObservableRangeCollection<Data> _Agents {  get; set; }
 		public ObservableRangeCollection<Grouping<string, AgentToView>> GAgentsToView { get; set; } = new();
 		public AgentsPageViewModel()
 		{
 			_AgentsToView = [];
+			_Agents = [];
 			Thread AgentsThread = new(async ()=> await ReadAgents());
 			AgentsThread.Start();
 		}
@@ -26,6 +28,8 @@ namespace ValoGun.ViewModels
 			var data = reader.ReadToEnd();
 			var jsonData = JsonConvert.DeserializeObject<Agents>(data);
 			var dataSorted = jsonData.data.OrderBy(x => x.displayName);
+			_Agents.Clear();
+
 			foreach (var agent in dataSorted)
 			{
 				string lowerName = agent.displayName.ToLower();
@@ -39,7 +43,7 @@ namespace ValoGun.ViewModels
 				}
 				agent.portrait = $"{lowerName}fullportrait.png";
 				agent.Background = $"{lowerName}background.png";
-
+				_Agents.Add(agent);
 				AgentToView tempAgent = new();
 				tempAgent.uuid = agent.uuid;
 				tempAgent.displayName = agent.displayName;
@@ -58,9 +62,11 @@ namespace ValoGun.ViewModels
 
 
 		[RelayCommand]
-		public async Task NavigateToAgent(Data agent)
+		public async Task NavigateToAgent(AgentToView _agent)
 		{
-			AgentDetailsViewModel.MainAgent = agent;
+			Data Agent = new();
+			Agent = _Agents.Where(c => c.uuid == _agent.uuid).FirstOrDefault();
+			AgentDetailsViewModel.MainAgent = Agent;
 			await Shell.Current.GoToAsync($"{nameof(AgentDetailsPage)}", true);
 		}
 	}

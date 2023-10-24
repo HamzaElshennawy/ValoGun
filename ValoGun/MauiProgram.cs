@@ -17,7 +17,7 @@ namespace ValoGun
                 fonts.AddFont("BowlbyRegular.ttf", "BowlbyRegular");
             }).UseMauiCommunityToolkit();
             builder.Services.AddSingleton<HomePageViewModel>();
-            builder.Services.AddTransient<WeaponStatusViewModel>();
+            builder.Services.AddTransient<WeaponsViewModel>();
 			builder.Services.AddSingleton<HomePage>();
 
 

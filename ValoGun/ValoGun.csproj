@@ -244,6 +244,9 @@
 	  <Compile Update="Pages\AgentsPage.xaml.cs">
 	    <DependentUpon>AgentsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\WeaponDetailsPage.xaml.cs">
+	    <DependentUpon>WeaponDetailsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\WeaponsPage.xaml.cs">
 	    <DependentUpon>WeaponsPage.xaml</DependentUpon>
 	  </Compile>
@@ -260,6 +263,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\WeaponDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\WeaponSkinsPage.xaml">

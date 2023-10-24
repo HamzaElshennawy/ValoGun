@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ValoGun.Pages.WeaponSkinsPage"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
-             x:DataType="viewmodels:WeaponStatusViewModel"
+             x:DataType="viewmodels:WeaponSkinsViewModel"
              xmlns:model="clr-namespace:ValoGun.Models.Weapons"
              Title="{Binding Title}">
 
+    <ContentPage.BindingContext>
+        <viewmodels:WeaponSkinsViewModel/>
+    </ContentPage.BindingContext>
+    
     <CollectionView ItemsSource="{Binding Skins}" SelectionMode="None"
                   >
-        <CollectionView.Header>
-            <ProgressBar Progress="{Binding progress}"/>
-        </CollectionView.Header>
+        
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Skin">
                 <Frame 
