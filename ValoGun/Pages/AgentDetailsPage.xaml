@@ -17,9 +17,9 @@
         <StackLayout Padding="0">
             <StackLayout.Background>
                 <LinearGradientBrush>
-                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[0],StringFormat='#{0}'}" Offset="0.1"/>
-                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.5"/>
-                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.8"/>
+                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[3],StringFormat='#{0}'}" Offset="0.1"/>
+                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.5"/>
+                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.8"/>
                 </LinearGradientBrush>
             </StackLayout.Background>
             <StackLayout>
@@ -92,7 +92,7 @@
 
                     <Grid.Background>
                         <LinearGradientBrush>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[0],StringFormat='#{0}'}" Offset="0.1"/>
+                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[3],StringFormat='#{0}'}" Offset="0.1"/>
                             <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.7"/>
                             <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.9"/>
                         </LinearGradientBrush>
