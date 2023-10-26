@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              xmlns:model="clr-namespace:ValoGun.Models.Weapons"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              x:Class="ValoGun.Pages.WeaponsPage"
              BackgroundColor="#18181A">
 
@@ -17,6 +18,15 @@
             SelectionMode="None"
             Margin="0,10,0,0"
             >
+            <CollectionView.EmptyView>
+                <skia:SKLottieView
+                    Source="LoadingAnimation.json"
+                    RepeatCount="-1"
+                    HeightRequest="300"
+                    WidthRequest="150"
+                    HorizontalOptions="Center"
+                />
+            </CollectionView.EmptyView>
             <CollectionView.GroupHeaderTemplate>
 
                 <DataTemplate >
