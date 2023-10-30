@@ -35,14 +35,17 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<FileVersion>0.0.1</FileVersion>
+		<AssemblyVersion>0.0.1</AssemblyVersion>
+		<Version>0.1.1</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000"/>
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -71,6 +74,7 @@
 	  <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
 	  <None Remove="Resources\Raw\Odin.json" />
 	  <None Remove="Resources\Raw\Vandal.json" />
+	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -278,6 +282,10 @@
 	  <PackageReference Include="Xamarin.Firebase.Crashlytics">
 	    <Version>118.4.1</Version>
 	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\Splash\splashhh.svg" Color="#512BD4" BaseSize="128,128" />
 	</ItemGroup>
 
 	<!-- Build Properties must be defined within these property groups to ensure successful publishing

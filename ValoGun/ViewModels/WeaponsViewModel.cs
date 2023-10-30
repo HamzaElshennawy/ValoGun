@@ -47,7 +47,7 @@ namespace ValoGun.ViewModels
 
 		private async Task<Task> ReadData()
 		{
-
+			IsBusy = true;
 			try
 			{
 				string filePath = "weapons.json";
@@ -89,7 +89,7 @@ namespace ValoGun.ViewModels
 			// Read the JSON file content
 
 
-
+			IsBusy = false;
 			return Task.CompletedTask;
 		}
 
