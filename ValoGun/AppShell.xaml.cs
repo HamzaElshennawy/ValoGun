@@ -12,6 +12,8 @@ namespace ValoGun
 			Routing.RegisterRoute(nameof(AgentsPage), typeof(AgentsPage));
 			Routing.RegisterRoute(nameof(AgentDetailsPage), typeof(AgentDetailsPage));
 			Routing.RegisterRoute(nameof(WeaponDetailsPage), typeof(WeaponDetailsPage));
+			Routing.RegisterRoute(nameof(PlayerCardsPage), typeof(PlayerCardsPage));
+			Routing.RegisterRoute(nameof(PlayerCardsDetailsPage), typeof(PlayerCardsDetailsPage));
 		}
 	}
 }

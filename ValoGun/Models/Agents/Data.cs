@@ -12,6 +12,7 @@
 		public string portrait { get; set; }
 		public string Background { get; set; }
 		public string background { get; set; }
+		public Gradiants _backgroundGradientColors { get; set; }
 		public string[] backgroundGradientColors { get; set; }
 		public bool isFullPortraitRightFacing { get; set; }
 		public bool isPlayableCharacter { get; set; }

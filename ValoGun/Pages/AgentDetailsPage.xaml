@@ -14,15 +14,17 @@
         <viewmodels:AgentDetailsViewModel/>
     </ContentPage.BindingContext>
     <ScrollView >
-        <StackLayout Padding="0">
-            <StackLayout.Background>
+        <StackLayout Padding="0" BackgroundColor="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}">
+            <!--<StackLayout.Background>
                 <LinearGradientBrush>
-                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[3],StringFormat='#{0}'}" Offset="0.1"/>
-                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.5"/>
-                    <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.8"/>
+                    <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                    <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                    <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                    <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
+                    
                 </LinearGradientBrush>
-            </StackLayout.Background>
-            <StackLayout>
+            </StackLayout.Background>-->
+            <Frame Margin="0" BorderColor="Transparent" BackgroundColor="Transparent">
                 <Label
                     Text="{Binding BindableAgent.displayName}"
                     TextColor="White"
@@ -30,8 +32,8 @@
                     HorizontalOptions="CenterAndExpand"
                     BackgroundColor="Transparent"
                     />
-            </StackLayout>
-            <StackLayout Padding="0">
+            </Frame>
+            <StackLayout Padding="3" Margin="-10,0">
                 <Frame
                     BackgroundColor="Transparent"
                     BorderColor="Transparent"
@@ -45,6 +47,14 @@
                         <Image Source="{Binding BindableAgent.background}" Grid.Column="2" Aspect="AspectFill"/>
                         <Image Source="{Binding BindableAgent.portrait}" Grid.ColumnSpan="3"/>
                     </Grid>
+                    <Frame.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
                 </Frame>
             </StackLayout>
             <StackLayout>
@@ -73,7 +83,7 @@
                         Grid.RowSpan="2"
                         />
                     <Label
-                        Margin="0,0,0,10"
+                        Margin="10,0,0,10"
                         Text="Info:"
                         FontSize="18"
                         Grid.Column="1"
@@ -92,9 +102,10 @@
 
                     <Grid.Background>
                         <LinearGradientBrush>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[3],StringFormat='#{0}'}" Offset="0.1"/>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.7"/>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.9"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
                         </LinearGradientBrush>
                     </Grid.Background>
                 </Grid>
@@ -118,7 +129,7 @@
                         Grid.RowSpan="2"
                         />
                     <Label
-                        Margin="0,0,0,10"
+                        Margin="10,0,0,10"
                         Text="{Binding BindableAgent.abilities[2].displayName,StringFormat='C: {0}'}"
                         FontSize="18"
                         Grid.Column="1"
@@ -136,9 +147,10 @@
                         />
                     <Grid.Background>
                         <LinearGradientBrush>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[0],StringFormat='#{0}'}" Offset="0.1"/>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.7"/>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.9"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
                         </LinearGradientBrush>
                     </Grid.Background>
                 </Grid>
@@ -166,7 +178,7 @@
                     />
 
                 <Label
-                    Margin="0,0,0,10"
+                    Margin="10,0,0,10"
                     Text="{Binding BindableAgent.abilities[0].displayName,StringFormat='Q: {0}'}"
                     FontSize="18"
                     Grid.Column="1"
@@ -186,10 +198,11 @@
 
                 <Grid.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[0],StringFormat='#{0}'}" Offset="0.1"/>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.7"/>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.9"/>
-                    </LinearGradientBrush>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
+                        </LinearGradientBrush>
                 </Grid.Background>
             </Grid>
             </Frame>
@@ -210,7 +223,7 @@
                     Grid.RowSpan="2"
                     />
                 <Label
-                    Margin="0,0,0,10"
+                    Margin="10,0,0,10"
                     Text="{Binding BindableAgent.abilities[1].displayName,StringFormat='E: {0}'}"
                     FontSize="18"
                     Grid.Column="1"
@@ -228,10 +241,11 @@
                     />
                 <Grid.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[0],StringFormat='#{0}'}" Offset="0.1"/>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.7"/>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.9"/>
-                    </LinearGradientBrush>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
+                        </LinearGradientBrush>
                 </Grid.Background>
             </Grid>
             </Frame>
@@ -252,7 +266,7 @@
                     Grid.RowSpan="2"
                     />
                 <Label
-                    Margin="0,0,0,10"
+                    Margin="10,0,0,10"
                     Text="{Binding BindableAgent.abilities[3].displayName,StringFormat='X: {0}:'}"
                     FontSize="18"
                     Grid.Column="1"
@@ -271,10 +285,11 @@
                     />
                 <Grid.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[0],StringFormat='#{0}'}" Offset="0.1"/>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.7"/>
-                        <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.9"/>
-                    </LinearGradientBrush>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
+                        </LinearGradientBrush>
                 </Grid.Background>
             </Grid>
             </Frame>
@@ -289,7 +304,7 @@
                     >
                     
                     <Label
-                        Margin="0,10,0,10"
+                        Margin="20"
                         Text="Biography"
                         FontSize="32"
                         Grid.Column="0"
@@ -309,9 +324,10 @@
                         />
                     <Grid.Background>
                         <LinearGradientBrush>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[0],StringFormat='#{0}'}" Offset="0.1"/>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[2],StringFormat='#{0}'}" Offset="0.7"/>
-                            <GradientStop Color="{Binding BindableAgent.backgroundGradientColors[1],StringFormat='#{0}'}" Offset="0.9"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor1}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset1}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor2}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset2}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor3}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset3}"/>
+                            <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
                         </LinearGradientBrush>
                     </Grid.Background>
                 </Grid>

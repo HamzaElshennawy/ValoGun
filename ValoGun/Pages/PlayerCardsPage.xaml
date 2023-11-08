@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ValoGun.ViewModels"
+             x:Class="ValoGun.Pages.PlayerCardsPage"
+             xmlns:model="clr-namespace:ValoGun.Models.Player_Cards"
+             Title="Player Cards">
+
+    <ContentPage.BindingContext>
+        <viewmodel:PlayerCardsViewModel/>
+    </ContentPage.BindingContext>
+    
+    <CollectionView
+        ItemsSource="{Binding _PlayerCards}"
+        >
+        <CollectionView.EmptyView>
+            <ContentView>
+                <Label Text="Empty"/>
+            </ContentView>
+        </CollectionView.EmptyView>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Data">
+                
+                    <Frame Padding="0" Margin="5" BackgroundColor="Transparent" WidthRequest="400">
+                        <StackLayout>
+                            <Label Text="{Binding displayName}" FontSize="20" HorizontalOptions="Center"/>
+                            <Image Source="{Binding displayIcon}"/>
+                        </StackLayout>
+                    </Frame>
+                
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

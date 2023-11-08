@@ -1,0 +1,356 @@
+{
+  "backgroundsGradiants": [
+    {
+      "uuid": "",
+      "displayname": "Gekko",
+      "backgroundGradientColors": {
+        "GradientColor1": "#C7F458",
+        "GradientColor2": "#D56324",
+        "GradientColor3": "#3A2656",
+        "GradientColor4": "#3A7233"
+      },
+      "Offsets": {
+        "Offset1": "0.102",
+        "Offset2": "0.306",
+        "Offset3": "0.749",
+        "Offset4": "0.845"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Fade",
+      "backgroundGradientColors": {
+        "GradientColor1": "#B1414C",
+        "GradientColor2": "#5589BD",
+        "GradientColor3": "#18344C",
+        "GradientColor4": "#66376C"
+      },
+      "Offsets": {
+        "Offset1": "0.283",
+        "Offset2": "0.657",
+        "Offset3": "0.923",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Breach",
+      "backgroundGradientColors": {
+        "GradientColor1": "#ff9c33ff",
+        "GradientColor2": "#b04621ff",
+        "GradientColor3": "#523a23ff",
+        "GradientColor4": "#44412eff"
+      },
+      "Offsets": {
+        "Offset1": "0.283",
+        "Offset2": "0.657",
+        "Offset3": "0.923",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Deadlock",
+      "backgroundGradientColors": {
+        "GradientColor1": "#bcc2ffff",
+        "GradientColor2": "#4d64c4ff",
+        "GradientColor3": "#221c3dff",
+        "GradientColor4": "#22224bff"
+      },
+      "Offsets": {
+        "Offset1": "0.125",
+        "Offset2": "0.689",
+        "Offset3": "0.933",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Raze",
+      "backgroundGradientColors": {
+        "GradientColor1": "#feac45ff",
+        "GradientColor2": "#d64f35ff",
+        "GradientColor3": "#2c5942ff",
+        "GradientColor4": "#2b474bff"
+      },
+      "Offsets": {
+        "Offset1": "0.125",
+        "Offset2": "0.689",
+        "Offset3": "1",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Chamber",
+      "backgroundGradientColors": {
+        "GradientColor1": "#ffce6fff",
+        "GradientColor2": "#7b4d21ff",
+        "GradientColor3": "#372d2bff",
+        "GradientColor4": "#163555ff"
+      },
+      "Offsets": {
+        "Offset1": "0.144",
+        "Offset2": "0.645",
+        "Offset3": "0.997",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Kayo",
+      "backgroundGradientColors": {
+        "GradientColor1": "#4afaffff",
+        "GradientColor2": "#4da6e1ff",
+        "GradientColor3": "#1a1e4bff",
+        "GradientColor4": "#391a61ff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.228",
+        "Offset3": "0.915",
+        "Offset4": "0.983"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Skye",
+      "backgroundGradientColors": {
+        "GradientColor1": "#94e789ff",
+        "GradientColor2": "#aa8a49ff",
+        "GradientColor3": "#4f1413ff",
+        "GradientColor4": "#314d48ff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.678",
+        "Offset3": "0.945",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Cypher",
+      "backgroundGradientColors": {
+        "GradientColor1": "#DB9B75",
+        "GradientColor2": "#444546",
+        "GradientColor3": "#23364B",
+        "GradientColor4": "#262626"
+      },
+      "Offsets": {
+        "Offset1": "0.309",
+        "Offset2": "0.817",
+        "Offset3": "0.901",
+        "Offset4": "0.996"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Sova",
+      "backgroundGradientColors": {
+        "GradientColor1": "#FFFFFF",
+        "GradientColor2": "#243651",
+        "GradientColor3": "#101c47ff",
+        "GradientColor4": "#0F152A"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.629",
+        "Offset3": "0.815",
+        "Offset4": "0.944"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Killjoy",
+      "backgroundGradientColors": {
+        "GradientColor1": "#ffc300ff",
+        "GradientColor2": "#b87b00ff",
+        "GradientColor3": "#413950ff",
+        "GradientColor4": "#614414ff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.103",
+        "Offset3": "0.445",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Harbor",
+      "backgroundGradientColors": {
+        "GradientColor1": "#f2d6a3ff",
+        "GradientColor2": "#136c6bff",
+        "GradientColor3": "#136c6bff",
+        "GradientColor4": "#0c262cff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.375",
+        "Offset3": "0.534",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Viper",
+      "backgroundGradientColors": {
+        "GradientColor1": "#89f476ff",
+        "GradientColor2": "#589758",
+        "GradientColor3": "#2A5629",
+        "GradientColor4": "#080A08"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.333",
+        "Offset3": "0.667",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Phoenix",
+      "backgroundGradientColors": {
+        "GradientColor1": "#F7BF60",
+        "GradientColor2": "#EA6D4E",
+        "GradientColor3": "#262423",
+        "GradientColor4": "#363B42"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.333",
+        "Offset3": "0.845",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Astra",
+      "backgroundGradientColors": {
+        "GradientColor1": "#f47dc9ff",
+        "GradientColor2": "#a54498ff",
+        "GradientColor3": "#FE9950",
+        "GradientColor4": "#5210C6"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.332",
+        "Offset3": "0.713",
+        "Offset4": "0.973"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Brimstone",
+      "backgroundGradientColors": {
+        "GradientColor1": "#eb953fff",
+        "GradientColor2": "#892c1bff",
+        "GradientColor3": "#211d21ff",
+        "GradientColor4": "#282b38ff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.332",
+        "Offset3": "0.713",
+        "Offset4": "0.973"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Neon",
+      "backgroundGradientColors": {
+        "GradientColor1": "#ba89ffff",
+        "GradientColor2": "#6241ccff",
+        "GradientColor3": "#38328eff",
+        "GradientColor4": "#2c4799ff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.332",
+        "Offset3": "0.713",
+        "Offset4": "0.973"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Yoru",
+      "backgroundGradientColors": {
+        "GradientColor1": "#66a8ffff",
+        "GradientColor2": "#3b37a7ff",
+        "GradientColor3": "#261e4fff",
+        "GradientColor4": "#101042ff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.332",
+        "Offset3": "0.713",
+        "Offset4": "0.973"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Sage",
+      "backgroundGradientColors": {
+        "GradientColor1": "#7bfedeff",
+        "GradientColor2": "#41819aff",
+        "GradientColor3": "#102d23ff",
+        "GradientColor4": "#226071ff"
+      },
+      "Offsets": {
+        "Offset1": "0",
+        "Offset2": "0.351",
+        "Offset3": "0.837",
+        "Offset4": "0.973"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Reyna",
+      "backgroundGradientColors": {
+        "GradientColor1": "#e46e77ff",
+        "GradientColor2": "#c44d9fff",
+        "GradientColor3": "#2f2664ff",
+        "GradientColor4": "#2f203fff"
+      },
+      "Offsets": {
+        "Offset1": "0.075",
+        "Offset2": "0.311",
+        "Offset3": "0.871",
+        "Offset4": "0.934"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Omen",
+      "backgroundGradientColors": {
+        "GradientColor1": "#4F53AF",
+        "GradientColor2": "#344673",
+        "GradientColor3": "#193B3D",
+        "GradientColor4": "#193B3D"
+      },
+      "Offsets": {
+        "Offset1": "0.047",
+        "Offset2": "0.234",
+        "Offset3": "1",
+        "Offset4": "1"
+      }
+    },
+    {
+      "uuid": "",
+      "displayname": "Jett",
+      "backgroundGradientColors": {
+        "GradientColor1": "#90e3fdff",
+        "GradientColor2": "#557f8cff",
+        "GradientColor3": "#2b4e7cff",
+        "GradientColor4": "#1e3344ff"
+      },
+      "Offsets": {
+        "Offset1": "0.075",
+        "Offset2": "0.311",
+        "Offset3": "0.769",
+        "Offset4": "1"
+      }
+    }
+  ]
+}

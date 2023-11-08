@@ -4,90 +4,168 @@
              x:Class="ValoGun.Pages.WeaponDetailsPage"
              xmlns:model="clr-namespace:ValoGun.Models.Weapons"
              xmlns:viewmodel="clr-namespace:ValoGun.ViewModels"
-             Title="{Binding SelectedWeapon.displayName}"
+             Title="Weapon Details"
              >
     <ContentPage.BindingContext>
         <viewmodel:WeaponDetailsViewModel/>
     </ContentPage.BindingContext>
-    <ScrollView>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height=".2*"/>
-                <RowDefinition Height=".8*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.Background>
-                <LinearGradientBrush>
-                    <GradientStop Color="#555" Offset="0"/>
-                    <GradientStop Color="#000" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <!--<Button 
-                Text="Show Skins"
-                FontSize="22"
-                HorizontalOptions="CenterAndExpand"
-                Margin="0,30,0,0"
-                TextColor="Black"
-                BackgroundColor="red"
-                WidthRequest="100"
-                HeightRequest=""
-                Grid.Row="0"
+    <ScrollView BackgroundColor="#18181A">
+        <StackLayout>
+            <Frame
+                BackgroundColor="Transparent"
+                Margin="10"
+                HeightRequest="350"
+                BorderColor="Transparent"
                 >
-                --><!--<Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#AAA" Offset="0.1"/>
-                        <GradientStop Color="#CCC" Offset="0.5"/>
-                        <GradientStop Color="#FFF" Offset="0.9"/>
-                    </LinearGradientBrush>
-                </Button.Background>--><!--
-            </Button>-->
-            <StackLayout Grid.Row="0">
-                <Label Text="test"/>
+                <Image Source="{Binding SelectedWeapon.displayIcon}"/>
+            </Frame>
+            <Grid ColumnDefinitions=".5*,.5*" Padding="0" Margin="10">
+                <Label
+                    Text="Type:"
+                    TextColor="Red"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    TextTransform="Uppercase"
+                    />
+                <Label
+                    Text="{Binding SelectedWeapon.shopData.categoryText}"
+                    TextColor="White"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    TextTransform="Uppercase"
+                    />
+            </Grid>
+            <BoxView HeightRequest="2" BackgroundColor="#FAFAFA" Margin="10,0" />
+            <Grid ColumnDefinitions=".5*,.5*" Padding="0" Margin="10">
+                <Label
+                    Text="Crids:"
+                    TextTransform="Uppercase"
+                    TextColor="Red"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    />
+                <Label
+                    Text="{Binding SelectedWeapon.shopData.cost}"
+                    TextTransform="Uppercase"
+                    TextColor="White"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    />
+            </Grid>
+            <BoxView HeightRequest="2" BackgroundColor="#FAFAFA" Margin="10,0" />
+            <Grid ColumnDefinitions=".5*,.5*" Padding="0" Margin="10">
+                <Label
+                    Text="MAGAZINE:"
+                    TextColor="Red"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    />
+                <Label
+                    Text="{Binding SelectedWeapon.weaponStats.magazineSize}"
+                    TextColor="White"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    />
+            </Grid>
+            <BoxView HeightRequest="2" BackgroundColor="#FAFAFA" Margin="10,0" />
+            <Grid ColumnDefinitions=".5*,.5*" Padding="0" Margin="10">
+                <Label
+                    Text="WALL penetration:"
+                    TextTransform="Uppercase"
+                    TextColor="Red"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    />
+                <Label
+                    Text="{Binding SelectedWeapon.weaponStats.wallPenetration}"
+                    TextColor="White"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    />
+            </Grid>
+            <BoxView HeightRequest="2" BackgroundColor="#FAFAFA" Margin="10,0" />
+            <Grid ColumnDefinitions=".5*,.5*" Padding="0" Margin="10">
+                <Label
+                    Text="FIRE MODE:"
+                    TextColor="Red"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    />
+                <Label
+                    Text="{Binding SelectedWeapon.weaponStats.fireMode}"
+                    TextColor="White"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    />
+            </Grid>
+            <BoxView HeightRequest="2" BackgroundColor="#FAFAFA" Margin="10,0" />
+            <Grid ColumnDefinitions=".5*,.5*" Padding="0" Margin="10">
+                <Label
+                    Text="FIRE RATE:"
+                    TextColor="Red"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    />
+                <Label
+                    Text="{Binding SelectedWeapon.weaponStats.fireRate,StringFormat='{0} Round/sec'}"
+                    TextColor="White"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    />
+            </Grid>
+            <BoxView HeightRequest="2" BackgroundColor="#FAFAFA" Margin="10,0" />
+            <StackLayout Padding="0" Margin="10">
+                <CarouselView 
+                    ItemsSource="{Binding SelectedWeapon.skins}" 
+                    Loop="False"
+                    
+                    >
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BackgroundColor="Transparent"
+                                Margin="10"
+                                HeightRequest="350"
+                                BorderColor="Transparent"
+                                >
+                                <StackLayout>
+                                    <Image Source="{Binding displayIcon}"/>
+                                    <Label 
+                                        Text="{Binding displayName}"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        FontSize="30"
+                                        />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
             </StackLayout>
-            <StackLayout Grid.Row="1">
-                <Label Text="test"/>
-            </StackLayout>
-            <VerticalStackLayout Grid.Row="2">
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-                <Label Text="test1"/>
-
-            </VerticalStackLayout>
-        </Grid>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

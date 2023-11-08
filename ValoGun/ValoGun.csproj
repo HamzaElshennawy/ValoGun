@@ -43,7 +43,7 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000"/>
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000" />
 
 		<!-- Splash Screen -->
 
@@ -72,7 +72,9 @@
 	  <None Remove="Images\Weapons\weaponsbackground.svg" />
 	  <None Remove="Platforms\Android\Resources\values\strings.xml" />
 	  <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
+	  <None Remove="Resources\Raw\Agents.json" />
 	  <None Remove="Resources\Raw\Odin.json" />
+	  <None Remove="Resources\Raw\PlayerCards.json" />
 	  <None Remove="Resources\Raw\Vandal.json" />
 	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
@@ -268,6 +270,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PlayerCardsDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PlayerCardsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\WeaponDetailsPage.xaml">

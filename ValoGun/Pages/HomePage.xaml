@@ -231,7 +231,7 @@
                 IsClippedToBounds="False">
                 <Grid ColumnDefinitions=".5*,.5*">
                     <Label 
-                        Text="Maps"
+                        Text="PLAYER CARDS"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Center"
@@ -241,11 +241,11 @@
                         FontAttributes="Bold"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"/>
-                    <Grid Grid.Column="1" >
-                        
-
-                    </Grid>
+                    
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToPlayerCardsPageCommand}" NumberOfTapsRequired="1"/>
+                </Frame.GestureRecognizers>
             </Frame>
         </StackLayout>
     </ScrollView>
