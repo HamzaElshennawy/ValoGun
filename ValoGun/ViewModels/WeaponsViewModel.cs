@@ -4,6 +4,8 @@ using MvvmHelpers.Commands;
 using Newtonsoft.Json;
 using ValoGun.Models.Weapons;
 using ValoGun.Pages;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Storage;
 
 namespace ValoGun.ViewModels
 {

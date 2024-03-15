@@ -9,26 +9,36 @@
     <ContentPage.BindingContext>
         <viewmodel:PlayerCardsViewModel/>
     </ContentPage.BindingContext>
-    
-    <CollectionView
-        ItemsSource="{Binding _PlayerCards}"
-        >
-        <CollectionView.EmptyView>
-            <ContentView>
-                <Label Text="Empty"/>
-            </ContentView>
-        </CollectionView.EmptyView>
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:Data">
-                
-                    <Frame Padding="0" Margin="5" BackgroundColor="Transparent" WidthRequest="400">
-                        <StackLayout>
+    <Grid RowDefinitions="50,*">
+        
+        <SearchBar
+            Grid.Row="0"
+            Placeholder="Search"
+            SearchButtonPressed="SearchBar_SearchButtonPressed"
+            />
+        <CollectionView
+            x:Name="CardsCV"
+            Grid.Row="1"
+            ItemsSource="{Binding PlayerCards}"
+            >
+
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <Label Text="Empty"/>
+                </ContentView>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Data">
+
+                    <Frame Padding="0" Margin="5" BackgroundColor="Transparent">
+                        <Grid>
+                            <Image Source="{Binding largeArt}" Aspect="AspectFit"/>
                             <Label Text="{Binding displayName}" FontSize="20" HorizontalOptions="Center"/>
-                            <Image Source="{Binding displayIcon}"/>
-                        </StackLayout>
+                        </Grid>
                     </Frame>
-                
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>

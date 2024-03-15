@@ -3,6 +3,9 @@ using MvvmHelpers;
 using Newtonsoft.Json;
 using ValoGun.Models.Agents;
 using ValoGun.Pages;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Storage;
+using System.Diagnostics.Metrics;
 
 namespace ValoGun.ViewModels
 {
@@ -11,13 +14,13 @@ namespace ValoGun.ViewModels
 		public Agents agents { get; set; }
 
 		public ObservableRangeCollection<AgentToView> _AgentsToView { get; set; }
-		public ObservableRangeCollection<Data> _Agents {  get; set; }
+		public ObservableRangeCollection<Data> _Agents { get; set; }
 		public ObservableRangeCollection<Grouping<string, AgentToView>> GAgentsToView { get; set; } = new();
 		public AgentsPageViewModel()
 		{
 			_AgentsToView = [];
 			_Agents = [];
-			Thread AgentsThread = new(async ()=> await ReadAgents());
+			Thread AgentsThread = new(async () => await ReadAgents());
 			AgentsThread.Start();
 		}
 
@@ -29,15 +32,15 @@ namespace ValoGun.ViewModels
 			var jsonData = JsonConvert.DeserializeObject<Agents>(data);
 			var dataSorted = jsonData.data.OrderBy(x => x.displayName);
 			_Agents.Clear();
-
-			foreach (var agent in dataSorted)
+			int counter = 0;
+			foreach(var agent in dataSorted)
 			{
 				string lowerName = agent.displayName.ToLower();
-				if (agent.displayName == "KAY/O")
+				if(agent.displayName == "KAY/O")
 				{
 					lowerName = "kayo";
 				}
-				for (int i = 0; i < agent.abilities.Length; i++)
+				for(int i = 0; i < agent.abilities.Length; i++)
 				{
 					agent.abilities[i].DisplayIcon = $"{lowerName}displayicon{i + 1}.png";
 				}
@@ -51,13 +54,15 @@ namespace ValoGun.ViewModels
 				tempAgent.background = agent.background;
 				tempAgent.role = agent.role.displayName;
 				_AgentsToView.Add(tempAgent);
+				counter++;
+				//await MainThread.InvokeOnMainThreadAsync(() => Application.Current.MainPage.DisplayAlert("Counter", $"{counter}", "OK"));
 			}
-			await MainThread.InvokeOnMainThreadAsync(()=>GAgentsToView.Add(new Grouping<string, AgentToView>("Controllers", _AgentsToView.Where(c => c.role == "Controller").OrderBy((w) => w.displayName))));
-			await MainThread.InvokeOnMainThreadAsync(()=>GAgentsToView.Add(new Grouping<string, AgentToView>("Duelists", _AgentsToView.Where(c => c.role == "Duelist").OrderBy((w) => w.displayName))));
-			await MainThread.InvokeOnMainThreadAsync(()=>GAgentsToView.Add(new Grouping<string, AgentToView>("Sentinels", _AgentsToView.Where(c => c.role == "Sentinel").OrderBy((w) => w.displayName))));
-			await MainThread.InvokeOnMainThreadAsync(()=>GAgentsToView.Add(new Grouping<string, AgentToView>("Initiators", _AgentsToView.Where(c => c.role == "Initiator").OrderBy((w) => w.displayName))));
+			await MainThread.InvokeOnMainThreadAsync(() => GAgentsToView.Add(new Grouping<string, AgentToView>("Controllers", _AgentsToView.Where(c => c.role == "Controller").OrderBy((w) => w.displayName))));
+			await MainThread.InvokeOnMainThreadAsync(() => GAgentsToView.Add(new Grouping<string, AgentToView>("Duelists", _AgentsToView.Where(c => c.role == "Duelist").OrderBy((w) => w.displayName))));
+			await MainThread.InvokeOnMainThreadAsync(() => GAgentsToView.Add(new Grouping<string, AgentToView>("Sentinels", _AgentsToView.Where(c => c.role == "Sentinel").OrderBy((w) => w.displayName))));
+			await MainThread.InvokeOnMainThreadAsync(() => GAgentsToView.Add(new Grouping<string, AgentToView>("Initiators", _AgentsToView.Where(c => c.role == "Initiator").OrderBy((w) => w.displayName))));
 			await MainThread.InvokeOnMainThreadAsync(() => OnPropertyChanged(nameof(_AgentsToView)));
-			
+
 		}
 
 

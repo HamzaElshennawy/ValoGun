@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ValoGun.Models.Agents;
+using Microsoft.Maui.ApplicationModel;
 
 namespace ValoGun.ViewModels
 {
@@ -12,11 +13,9 @@ namespace ValoGun.ViewModels
 	{
 
 		public static Data MainAgent { get; set; }
-		public Data BindableAgent { get; set; }
 		public AgentDetailsViewModel()
 		{
-			BindableAgent = MainAgent;
-			MainThread.BeginInvokeOnMainThread(()=> OnPropertyChanged(nameof(BindableAgent)));
+			MainThread.InvokeOnMainThreadAsync(()=>OnPropertyChanged(nameof(MainAgent)));
 		}
 	}
 }

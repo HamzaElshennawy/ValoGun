@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers;
 using ValoGun.Models.Weapons;
+using Microsoft.Maui.ApplicationModel;
 
 
 namespace ValoGun.ViewModels

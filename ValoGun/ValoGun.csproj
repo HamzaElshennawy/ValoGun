@@ -1,315 +1,285 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
-		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
-
-		<!-- Note for MacCatalyst:
+  <PropertyGroup>
+    <TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+    <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+    <!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
+    <!-- Note for MacCatalyst:
 		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
 		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifer>.
 		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
 		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
-		<!-- ex. <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
-
-		<OutputType>Exe</OutputType>
-		<RootNamespace>ValoGun</RootNamespace>
-		<UseMaui>true</UseMaui>
-		<SingleProject>true</SingleProject>
-		<ImplicitUsings>enable</ImplicitUsings>
-
-		<!-- Display name -->
-		<ApplicationTitle>ValoGun</ApplicationTitle>
-
-		<!-- App Identifier -->
-		<ApplicationId>com.companyname.valogun</ApplicationId>
-
-		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
-
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		<FileVersion>0.0.1</FileVersion>
-		<AssemblyVersion>0.0.1</AssemblyVersion>
-		<Version>0.1.1</Version>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000" />
-
-		<!-- Splash Screen -->
-
-		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
-
-		<!-- Custom Fonts -->
-		<MauiFont Include="Resources\Fonts\*" />
-
-		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
-		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <None Remove="Agents.json" />
-	  <None Remove="google-services.json" />
-	  <None Remove="Images\Agents\agentbackground.svg" />
-	  <None Remove="Images\Agents\Agents.png" />
-	  <None Remove="Images\Agents\background1.png" />
-	  <None Remove="Images\HomeScreen\ranks.png" />
-	  <None Remove="Images\Maps\Ascent.png" />
-	  <None Remove="Images\Maps\mapsbackground.svg" />
-	  <None Remove="Images\Weapons\Weapons.png" />
-	  <None Remove="Images\Weapons\weaponsbackground.svg" />
-	  <None Remove="Platforms\Android\Resources\values\strings.xml" />
-	  <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
-	  <None Remove="Resources\Raw\Agents.json" />
-	  <None Remove="Resources\Raw\Odin.json" />
-	  <None Remove="Resources\Raw\PlayerCards.json" />
-	  <None Remove="Resources\Raw\Vandal.json" />
-	  <None Remove="Resources\Splash\splash.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Include="Images\HomeScreen\ranks.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astrabackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon5.png" />
-	  <EmbeddedResource Include="weapons.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <GoogleServicesJson Include="google-services.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiAsset Include="weapons.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Include="Images\Agents\agents.png" />
-	  <MauiImage Include="Images\Agents\agentbackground.svg" />
-	  <MauiImage Include="Images\Agents\background1.png" />
-	  <MauiImage Include="Images\Maps\ascent.png" />
-	  <MauiImage Include="Images\Maps\mapsbackground.svg" />
-	  <MauiImage Include="Images\Weapons\weaponsbackground.svg" />
-	  <MauiImage Include="Images\Weapons\weapons.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Astra\astrafullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Breach\breachfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Breach\breachbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonefullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonebackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Fade\fadefullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Fade\fadebackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkofullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkobackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Harbor\harborfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Harbor\harborbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Jett\jettfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Jett\jettbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon5.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayofullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayobackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoyfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoybackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Neon\neonfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Neon\neonbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Omen\omenfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Omen\omenbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Raze\razefullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Raze\razebackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynafullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynabackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sage\sagefullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sage\sagebackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Skye\skyefullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Skye\skyebackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sova\sovafullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sova\sovabackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Viper\viperfullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Viper\viperbackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon4.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorufullportrait.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorubackground.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon1.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon2.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon3.png" />
-	  <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon4.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-rc.2.9373" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.0-rc.2.9373" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
-		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.86" />
-		<PackageReference Include="Wasi.Sdk" Version="0.1.4-preview.10020" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Pages\AgentsPage.xaml.cs">
-	    <DependentUpon>AgentsPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\WeaponDetailsPage.xaml.cs">
-	    <DependentUpon>WeaponDetailsPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\WeaponsPage.xaml.cs">
-	    <DependentUpon>WeaponsPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\WeaponSkinsPage.xaml.cs">
-	    <DependentUpon>WeaponSkinsPage.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Pages\AgentDetailsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\AgentsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\HomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\PlayerCardsDetailsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\PlayerCardsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\WeaponDetailsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\WeaponSkinsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-	  <PackageReference Include="Xamarin.Firebase.Crashlytics">
-	    <Version>118.4.1</Version>
-	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Resources\Splash\splashhh.svg" Color="#512BD4" BaseSize="128,128" />
-	</ItemGroup>
-
-	<!-- Build Properties must be defined within these property groups to ensure successful publishing
+    <!-- ex. <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ValoGun</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Display name -->
+    <ApplicationTitle>ValoGun</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId>com.companyname.valogun</ApplicationId>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+    <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+    <FileVersion>0.0.1</FileVersion>
+    <AssemblyVersion>0.0.1</AssemblyVersion>
+    <Version>0.1.1</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- App Icon -->
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000" />
+    <!-- Splash Screen -->
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\*" />
+    <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+    <!-- Custom Fonts -->
+    <MauiFont Include="Resources\Fonts\*" />
+    <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Agents.json" />
+    <None Remove="google-services.json" />
+    <None Remove="Images\Agents\agentbackground.svg" />
+    <None Remove="Images\Agents\Agents.png" />
+    <None Remove="Images\Agents\background1.png" />
+    <None Remove="Images\HomeScreen\ranks.png" />
+    <None Remove="Images\Maps\Ascent.png" />
+    <None Remove="Images\Maps\mapsbackground.svg" />
+    <None Remove="Images\Weapons\Weapons.png" />
+    <None Remove="Images\Weapons\weaponsbackground.svg" />
+    <None Remove="Platforms\Android\Resources\values\strings.xml" />
+    <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
+    <None Remove="Resources\Raw\Agents.json" />
+    <None Remove="Resources\Raw\Odin.json" />
+    <None Remove="Resources\Raw\PlayerCards.json" />
+    <None Remove="Resources\Raw\Vandal.json" />
+    <None Remove="Resources\Splash\splash.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <MauiImage Include="Images\HomeScreen\ranks.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Astra\astrabackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Astra\astradisplayicon5.png" />
+    <EmbeddedResource Include="weapons.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <MauiAsset Include="weapons.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <MauiImage Include="Images\Agents\agents.png" />
+    <MauiImage Include="Images\Agents\agentbackground.svg" />
+    <MauiImage Include="Images\Agents\background1.png" />
+    <MauiImage Include="Images\Maps\ascent.png" />
+    <MauiImage Include="Images\Maps\mapsbackground.svg" />
+    <MauiImage Include="Images\Weapons\weaponsbackground.svg" />
+    <MauiImage Include="Images\Weapons\weapons.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Astra\astrafullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Breach\breachfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Breach\breachbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Breach\breachdisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonefullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonebackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Brimstone\brimstonedisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Chamber\chamberdisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Cypher\cypherdisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Deadlock\deadlockdisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Fade\fadefullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Fade\fadebackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Fade\fadedisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkofullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkobackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Gekko\gekkodisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Harbor\harborfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Harbor\harborbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Harbor\harbordisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Jett\jettfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Jett\jettbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Jett\jettdisplayicon5.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayofullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayobackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Kayo\kayodisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoyfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoybackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Killjoy\killjoydisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Neon\neonfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Neon\neonbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Neon\neondisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Omen\omenfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Omen\omenbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Omen\omendisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Phoenix\phoenixdisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Raze\razefullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Raze\razebackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Raze\razedisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynafullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynabackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Reyna\reynadisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sage\sagefullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sage\sagebackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sage\sagedisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Skye\skyefullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Skye\skyebackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Skye\skyedisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sova\sovafullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sova\sovabackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Sova\sovadisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Viper\viperfullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Viper\viperbackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Viper\viperdisplayicon4.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorufullportrait.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorubackground.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon1.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon2.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon3.png" />
+    <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.92" />
+    <PackageReference Include="Wasi.Sdk" Version="0.1.4-preview.10020" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\AgentsPage.xaml.cs">
+      <DependentUpon>AgentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\WeaponDetailsPage.xaml.cs">
+      <DependentUpon>WeaponDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\WeaponsPage.xaml.cs">
+      <DependentUpon>WeaponsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\WeaponSkinsPage.xaml.cs">
+      <DependentUpon>WeaponSkinsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <MauiXaml Update="Pages\AgentDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\AgentsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\PlayerCardsDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\PlayerCardsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\WeaponDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\WeaponSkinsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\Splash\splashhh.svg" Color="#512BD4" BaseSize="128,128" />
+  </ItemGroup>
+  <!-- Build Properties must be defined within these property groups to ensure successful publishing
        to the Mac App Store. See: https://aka.ms/maui-publish-app-store#define-build-properties-in-your-project-file -->
   <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Debug'">
     <CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodesignEntitlements>
   </PropertyGroup>
-
   <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Release'">
     <CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Release.plist</CodesignEntitlements>
     <UseHardenedRuntime>true</UseHardenedRuntime>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
-
-  <ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionValoGunHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions>
+    <VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionValoGunHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarValoGunHideInfoBar="True" /></VisualStudio>
+  </ProjectExtensions>
 </Project>
