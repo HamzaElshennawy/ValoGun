@@ -16,29 +16,33 @@
             Placeholder="Search"
             SearchButtonPressed="SearchBar_SearchButtonPressed"
             />
-        <CollectionView
+        <ListView
             x:Name="CardsCV"
             Grid.Row="1"
-            ItemsSource="{Binding PlayerCards}"
+            ItemsSource="{Binding PlayerCardsListUI}"
+            SelectionMode="None"
+            HasUnevenRows="True"
+            CachingStrategy="RecycleElement"
             >
+            
 
-            <CollectionView.EmptyView>
+            <!--<List.EmptyView>
                 <ContentView>
                     <Label Text="Empty"/>
                 </ContentView>
-            </CollectionView.EmptyView>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Data">
-
-                    <Frame Padding="0" Margin="5" BackgroundColor="Transparent">
-                        <Grid>
-                            <Image Source="{Binding largeArt}" Aspect="AspectFit"/>
-                            <Label Text="{Binding displayName}" FontSize="20" HorizontalOptions="Center"/>
-                        </Grid>
-                    </Frame>
-
+            </List.EmptyView>-->
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:PlayerCardUI">
+                    <ViewCell>
+                        <Frame Padding="0" Margin="5" BackgroundColor="Transparent">
+                            <Grid RowDefinitions="*,.2*">
+                                <Image Source="{Binding largeArt}" Aspect="AspectFit" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding displayName}" FontSize="20" HorizontalOptions="Center" Grid.Column="1"/>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </ContentPage>

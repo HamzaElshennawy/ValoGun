@@ -15,7 +15,7 @@ public partial class PlayerCardsPage : ContentPage
 		CardsCV.ItemsSource = searchResult.Result;
 		if(((SearchBar)sender).Text == "")
 		{
-			CardsCV.ItemsSource = PlayerCardsViewModel.PlayerCards;
+			CardsCV.ItemsSource = PlayerCardsViewModel.PlayerCardsListUI;
 		}
 	}
 }

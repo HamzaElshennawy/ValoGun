@@ -13,9 +13,13 @@ namespace ValoGun.ViewModels
 	{
 
 		public static Data MainAgent { get; set; }
+
+		public Data Agent { get; set; } = new();
+
 		public AgentDetailsViewModel()
 		{
-			MainThread.InvokeOnMainThreadAsync(()=>OnPropertyChanged(nameof(MainAgent)));
+			Agent = MainAgent;
+			MainThread.InvokeOnMainThreadAsync(()=>OnPropertyChanged(nameof(Agent)));
 		}
 	}
 }
