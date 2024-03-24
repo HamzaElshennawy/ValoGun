@@ -31,7 +31,7 @@
                     HorizontalOptions="CenterAndExpand" 
                     HeightRequest="40" 
                     WidthRequest="200"
-                    BackgroundColor="#5D5D63"
+                    BackgroundColor="#555"
                     >
 
                     <Label 

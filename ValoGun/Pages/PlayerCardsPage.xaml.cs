@@ -4,10 +4,7 @@ namespace ValoGun.Pages;
 
 public partial class PlayerCardsPage : ContentPage
 {
-	public PlayerCardsPage()
-	{
-		InitializeComponent();
-	}
+	public PlayerCardsPage() => InitializeComponent();
 
 	private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
 	{

@@ -23,24 +23,15 @@ namespace ValoGun.ViewModels
             
         }
 
-        
 
-        [RelayCommand]
-        public async Task GoToWeaponsPage()
-        {
-            await Shell.Current.GoToAsync(nameof(WeaponsPage), true);
-        }
 
 		[RelayCommand]
-		public async Task GoToAgentsPage()
-		{
-			await Shell.Current.GoToAsync(nameof(AgentsPage), true);
-		}
+		public async Task GoToWeaponsPage() => await Shell.Current.GoToAsync( nameof( WeaponsPage ), true );
 
 		[RelayCommand]
-		public async Task GoToPlayerCardsPage()
-		{
-			await Shell.Current.GoToAsync(nameof(PlayerCardsPage), true);
-		}
-    }
+		public async Task GoToAgentsPage() => await Shell.Current.GoToAsync( nameof( AgentsPage ), true );
+
+		[RelayCommand]
+		public async Task GoToPlayerCardsPage() => await Shell.Current.GoToAsync( nameof( PlayerCardsPage ), true );
+	}
 }

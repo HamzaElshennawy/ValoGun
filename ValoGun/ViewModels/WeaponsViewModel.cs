@@ -1,11 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
-using MvvmHelpers.Commands;
 using Newtonsoft.Json;
 using ValoGun.Models.Weapons;
 using ValoGun.Pages;
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Storage;
 
 namespace ValoGun.ViewModels
 {
@@ -29,7 +26,7 @@ namespace ValoGun.ViewModels
 			}
 		}
 		public ObservableRangeCollection<Datum> Weapons { get; set; }
-		public ObservableRangeCollection<Grouping<string, Datum>> GWeapons { get; set; } = new();
+		public ObservableRangeCollection<Grouping<string, Datum>> GWeapons { get; set; } = [];
 		public ObservableRangeCollection<Skin> Skins { get; set; }
 
 
@@ -58,7 +55,7 @@ namespace ValoGun.ViewModels
 
 
 				string data = reader.ReadToEnd();
-				await MainThread.InvokeOnMainThreadAsync(() => Weapons.Clear());
+				await MainThread.InvokeOnMainThreadAsync(Weapons.Clear);
 				// Deserialize the JSON data into an object
 				var jsonData = JsonConvert.DeserializeObject<Weapons>(data);
 				foreach(var weapon in jsonData.data)

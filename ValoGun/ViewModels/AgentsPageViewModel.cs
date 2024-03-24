@@ -15,7 +15,7 @@ namespace ValoGun.ViewModels
 
 		public ObservableRangeCollection<AgentToView> _AgentsToView { get; set; }
 		public ObservableRangeCollection<Data> _Agents { get; set; }
-		public ObservableRangeCollection<Grouping<string, AgentToView>> GAgentsToView { get; set; } = new();
+		public ObservableRangeCollection<Grouping<string, AgentToView>> GAgentsToView { get; set; } = [];
 		public AgentsPageViewModel()
 		{
 			_AgentsToView = [];
@@ -47,12 +47,14 @@ namespace ValoGun.ViewModels
 				agent.portrait = $"{lowerName}fullportrait.png";
 				agent.Background = $"{lowerName}background.png";
 				_Agents.Add(agent);
-				AgentToView tempAgent = new();
-				tempAgent.uuid = agent.uuid;
-				tempAgent.displayName = agent.displayName;
-				tempAgent.displayIcon = agent.displayIcon;
-				tempAgent.background = agent.background;
-				tempAgent.role = agent.role.displayName;
+				AgentToView tempAgent = new()
+				{
+					uuid = agent.uuid,
+					displayName = agent.displayName,
+					displayIcon = agent.displayIcon,
+					background = agent.background,
+					role = agent.role.displayName
+				};
 				_AgentsToView.Add(tempAgent);
 				counter++;
 				//await MainThread.InvokeOnMainThreadAsync(() => Application.Current.MainPage.DisplayAlert("Counter", $"{counter}", "OK"));
