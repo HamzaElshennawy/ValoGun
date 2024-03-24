@@ -12,6 +12,7 @@ namespace ValoGun.Models.Agents
 		public string displayName { get; set; }
 		public string displayIcon { get; set; }
 		public string background { get; set; }
+		public string fullPortrait { get; set; }
 		public string role { get; set; }
     }
 }

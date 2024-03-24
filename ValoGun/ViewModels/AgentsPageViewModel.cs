@@ -53,7 +53,8 @@ namespace ValoGun.ViewModels
 					displayName = agent.displayName,
 					displayIcon = agent.displayIcon,
 					background = agent.background,
-					role = agent.role.displayName
+					role = agent.role.displayName,
+					fullPortrait = agent.fullPortrait
 				};
 				_AgentsToView.Add(tempAgent);
 				counter++;

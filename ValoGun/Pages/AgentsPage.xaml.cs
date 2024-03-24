@@ -7,4 +7,9 @@ public partial class AgentsPage : ContentPage
 		InitializeComponent();
 	}
 	protected override void OnNavigatedTo(NavigatedToEventArgs args) => base.OnNavigatedTo(args);
+
+	private void FixIsClipToBounds()
+	{
+		
+	}
 }

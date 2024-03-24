@@ -47,6 +47,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiAsset Remove="Resources\Raw\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Agents.json" />
     <None Remove="google-services.json" />
     <None Remove="Images\Agents\agentbackground.svg" />
@@ -61,7 +65,9 @@
     <None Remove="Resources\AppIcon\appiconfg.svg" />
     <None Remove="Resources\Fonts\AllertaStencil-Regular.ttf" />
     <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
+    <None Remove="Resources\Fonts\Valorant Font.ttf" />
     <None Remove="Resources\Raw\Agents.json" />
+    <None Remove="Resources\Raw\logo.png" />
     <None Remove="Resources\Raw\Odin.json" />
     <None Remove="Resources\Raw\PlayerCards.json" />
     <None Remove="Resources\Raw\Vandal.json" />
@@ -223,6 +229,7 @@
     <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon2.png" />
     <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon3.png" />
     <MauiImage Include="Resources\Images\AgentsImages\Yoru\yorudisplayicon4.png" />
+    <MauiImage Include="Resources\Raw\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -265,6 +272,9 @@
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Pages\PlayerCardsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\SplashLoadingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Pages\WeaponDetailsPage.xaml">

@@ -4,7 +4,13 @@
              x:Class="ValoGun.Pages.HomePage"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              Title="HomePage"
-             BackgroundColor="#18181A">
+             BackgroundColor="#18181A"
+             NavigationPage.HasBackButton="False"
+             
+             >
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False" />
+    </Shell.BackButtonBehavior>
     <ContentPage.BindingContext>
         <viewmodels:HomePageViewModel/>
     </ContentPage.BindingContext>
