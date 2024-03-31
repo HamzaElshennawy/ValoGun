@@ -33,5 +33,8 @@ namespace ValoGun.ViewModels
 
 		[RelayCommand]
 		public async Task GoToPlayerCardsPage() => await Shell.Current.GoToAsync( nameof( PlayerCardsPage ), true );
+
+		[RelayCommand]
+		public async Task GoToMapsPage() => await Shell.Current.GoToAsync( nameof( MapsPage ), true );
 	}
 }

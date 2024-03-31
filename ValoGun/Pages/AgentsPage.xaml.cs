@@ -6,7 +6,7 @@ public partial class AgentsPage : ContentPage
 	{
 		InitializeComponent();
 	}
-	protected override void OnNavigatedTo(NavigatedToEventArgs args) => base.OnNavigatedTo(args);
+	protected override bool OnBackButtonPressed() => base.OnBackButtonPressed();
 
 	private void FixIsClipToBounds()
 	{

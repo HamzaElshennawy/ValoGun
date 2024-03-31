@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks>net9.0-maccatalyst;net9.0-android</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <RootNamespace>ValoGun</RootNamespace>
@@ -22,6 +22,10 @@
     <AssemblyVersion>0.0.1</AssemblyVersion>
     <Version>0.1.1</Version>
     <UserSecretsId>1d2cbd5c-71ef-4de1-be60-20f969a4b360</UserSecretsId>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Nullable>enable</Nullable>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <PublishTrimmed>True</PublishTrimmed>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Debug'">
@@ -35,6 +39,28 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
+    <AndroidKeyStore>False</AndroidKeyStore>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
+    <AndroidKeyStore>False</AndroidKeyStore>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android34.0|AnyCPU'">
+    <AndroidKeyStore>False</AndroidKeyStore>
+    <AndroidSigningStorePass>hamza159</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>hamza159</AndroidSigningKeyPass>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android34.0|AnyCPU'">
+    <AndroidKeyStore>False</AndroidKeyStore>
+    <AndroidSigningStorePass>hamza159</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>hamza159</AndroidSigningKeyPass>
   </PropertyGroup>
 
   <ItemGroup>
@@ -68,6 +94,7 @@
     <None Remove="Resources\Fonts\Valorant Font.ttf" />
     <None Remove="Resources\Raw\Agents.json" />
     <None Remove="Resources\Raw\logo.png" />
+    <None Remove="Resources\Raw\maps.json" />
     <None Remove="Resources\Raw\Odin.json" />
     <None Remove="Resources\Raw\PlayerCards.json" />
     <None Remove="Resources\Raw\Vandal.json" />
@@ -233,10 +260,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="8.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.14" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.0-preview.2.10293" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
     <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.92" />
     <PackageReference Include="Wasi.Sdk" Version="0.1.4-preview.10020" />
@@ -268,6 +295,9 @@
     <MauiXaml Update="Pages\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+    <MauiXaml Update="Pages\MapsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Pages\PlayerCardsDetailsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
@@ -286,6 +316,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Pages\MapsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="Resources\Splash\splashhh.svg" Color="#512BD4" BaseSize="128,128" />
   </ItemGroup>
 
@@ -294,5 +327,11 @@
       <UserProperties XamarinHotReloadDebuggerTimeoutExceptionValoGunHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarValoGunHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
-
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>..\key.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass>hamza159</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>hamza159</AndroidSigningKeyPass>
+	</PropertyGroup>
 </Project>

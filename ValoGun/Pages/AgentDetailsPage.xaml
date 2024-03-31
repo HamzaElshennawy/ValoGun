@@ -25,6 +25,7 @@
                     <GradientStop Color="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.backgroundGradient.GradientColor4}" Offset="{Binding BindableAgent._backgroundGradientColors.backgroundsGradiantsColors.Offsets.Offset4}"/>
                 </LinearGradientBrush>
             </StackLayout.Background>-->
+            
             <Frame Margin="0" BorderColor="Transparent" BackgroundColor="Transparent">
                 <Label
                     Text="{Binding Agent.displayName}"

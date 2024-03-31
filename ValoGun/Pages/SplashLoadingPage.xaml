@@ -28,6 +28,7 @@
             />
 
         <Label
+            x:Name="loadingText"
                 Grid.Row="2"
                 Text="Loading..."
                 HorizontalOptions="Center"

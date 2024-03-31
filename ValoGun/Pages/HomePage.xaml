@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ValoGun.Pages.HomePage"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
-             Title="HomePage"
-             BackgroundColor="#18181A"
-             NavigationPage.HasBackButton="False"
              
+             BackgroundColor="#18181A"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
              >
     <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsEnabled="False" IsVisible="False" />
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
     <ContentPage.BindingContext>
         <viewmodels:HomePageViewModel/>
@@ -18,8 +18,16 @@
         <StackLayout
             Spacing="5">
             <!--Agents and Weapons Frames-->
+            <Label
+                Text="ValoHub"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Center"
+                TextColor="Red"
+                FontSize="80"
+                FontFamily="Valorant"
+                Margin="0,50"
+                />
 
-            
 
             <Frame 
                 Grid.Row="0"
@@ -140,6 +148,9 @@
               
                     </Grid>
                 </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToMapsPageCommand}" NumberOfTapsRequired="1"/>
+                </Frame.GestureRecognizers>
             </Frame>
             <!-- Ranks and Sparys Frames-->
             
