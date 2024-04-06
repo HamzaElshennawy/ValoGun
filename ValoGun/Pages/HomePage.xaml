@@ -4,8 +4,9 @@
              x:Class="ValoGun.Pages.HomePage"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              
-             BackgroundColor="#18181A"
-             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#0E1821"
+             Shell.BackgroundColor="#0E1821"
+             NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="False"
              >
     <Shell.BackButtonBehavior>
@@ -32,9 +33,9 @@
             <Frame 
                 Grid.Row="0"
                 HeightRequest="120"
-                BackgroundColor="#272729"
+                BackgroundColor="#5A5C62"
                 Margin="10,0"
-                BorderColor="#6E0001"
+                BorderColor="Transparent"
                 >
                 <Grid ColumnDefinitions=".5*,.5*"
                 IsClippedToBounds="False">
@@ -145,7 +146,7 @@
                         Grid.Column="0"
                         Grid.ColumnSpan="1"/>
                     <Grid Grid.Column="1" >
-              
+
                     </Grid>
                 </Grid>
                 <Frame.GestureRecognizers>
@@ -153,7 +154,7 @@
                 </Frame.GestureRecognizers>
             </Frame>
             <!-- Ranks and Sparys Frames-->
-            
+
             <Frame 
                 Grid.Column="0"
                 HeightRequest="120"
@@ -245,7 +246,7 @@
                         FontAttributes="Bold"
                         Grid.Column="0"
                         Grid.ColumnSpan="1"/>
-                    
+
                 </Grid>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToPlayerCardsPageCommand}" NumberOfTapsRequired="1"/>
