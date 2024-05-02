@@ -8,11 +8,11 @@ namespace ValoGun.Models.Agents
 {
     public class AgentToView
     {
-		public string uuid { get; set; }
-		public string displayName { get; set; }
-		public string displayIcon { get; set; }
-		public string background { get; set; }
-		public string fullPortrait { get; set; }
-		public string role { get; set; }
+		public string? uuid { get; set; }
+		public string? displayName { get; set; }
+		public string? displayIcon { get; set; }
+		public string? background { get; set; }
+		public string? fullPortrait { get; set; }
+		public string? role { get; set; }
     }
 }

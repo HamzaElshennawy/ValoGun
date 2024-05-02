@@ -31,9 +31,8 @@
 
             <CollectionView 
                 x:Name="AgentsCollectionView"
-                IsGrouped="True"
                 BackgroundColor="Transparent"
-                ItemsSource="{Binding GAgentsToView}"
+                ItemsSource="{Binding _AgentsToViewNew}"
                 SelectionMode="None"
                 Margin="0,10,0,0"
                 >
