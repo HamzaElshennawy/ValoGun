@@ -24,7 +24,29 @@
                     HeightRequest="180"
                     BorderColor="Transparent"
                     >
-                    <Image Source="{Binding splash}" Aspect="AspectFill" />
+                    <Grid>
+                        <Image Source="{Binding splash}" Aspect="AspectFill" />
+                        <Label
+                            Text="{Binding displayName}"
+                            FontSize="45"
+                            FontFamily="Valorant"
+                            TextColor="White"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Margin="0,0,0,0"
+                            />
+                        <Label
+                            Text="{Binding coordinates}"
+                            FontSize="14"
+                            TextColor="White"
+                            FontFamily="OpenSansRegular"
+                            VerticalOptions="EndAndExpand"
+                            Margin="10,0,0,0"
+                            />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:MapsPageViewModel}}, Path=GoToMapPageCommand}" NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>

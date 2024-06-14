@@ -85,7 +85,7 @@
     <None Remove="Agents.json" />
     <None Remove="google-services.json" />
     <None Remove="Images\Agents\agentbackground.svg" />
-    <None Remove="Images\Agents\Agents.png" />
+    <None Remove="Images\Agents\agents.png" />
     <None Remove="Images\Agents\background1.png" />
     <None Remove="Images\HomeScreen\ranks.png" />
     <None Remove="Images\Maps\Ascent.png" />
@@ -97,6 +97,8 @@
     <None Remove="Resources\Fonts\AllertaStencil-Regular.ttf" />
     <None Remove="Resources\Fonts\BowlbyRegular.ttf" />
     <None Remove="Resources\Fonts\Valorant Font.ttf" />
+    <None Remove="Resources\Images\rotateleft.png" />
+    <None Remove="Resources\Images\rotateright.png" />
     <None Remove="Resources\Raw\Agents.json" />
     <None Remove="Resources\Raw\logo.png" />
     <None Remove="Resources\Raw\maps.json" />
@@ -126,7 +128,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <MauiImage Include="Images\Agents\agents.png" />
     <MauiImage Include="Images\Agents\agentbackground.svg" />
     <MauiImage Include="Images\Agents\background1.png" />
     <MauiImage Include="Images\Maps\ascent.png" />
@@ -276,6 +277,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiImage Include="Images\Agents\agents.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Pages\AgentsPage.xaml.cs">
       <DependentUpon>AgentsPage.xaml</DependentUpon>
     </Compile>
@@ -298,6 +303,9 @@
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Pages\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Pages\MapPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="Pages\MapsPage.xaml">

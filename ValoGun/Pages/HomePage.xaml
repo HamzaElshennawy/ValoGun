@@ -4,7 +4,7 @@
              x:Class="ValoGun.Pages.HomePage"
              xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
              
-             BackgroundColor="#0E1821"
+             BackgroundColor="#1A1625"
              Shell.BackgroundColor="#0E1821"
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="False"
@@ -80,7 +80,7 @@
 
             <Frame 
                 Grid.Row="0"
-                HeightRequest="120"
+                HeightRequest="150"
                 BackgroundColor="#5A5C62"
                 Margin="10,0"
                 BorderColor="Transparent"
@@ -89,12 +89,14 @@
                 >
                 <Grid ColumnDefinitions=".5*,.5*"
                 IsClippedToBounds="False">
-                    <Image 
+                    <Image
                         Grid.Column="1"
                         Grid.ColumnSpan="1"
-                        Aspect="AspectFill"
-                        Margin="-10"
-                        Source="Images/Agents/background1.png"
+                        WidthRequest="20"
+                        HeightRequest="20"
+                        Aspect="AspectFit"
+                        Margin="0"
+                        Source="Images/Agents/agents.png"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand"
                         />
@@ -123,7 +125,7 @@
                 </Grid>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:HomePageViewModel}}, Path=GoToAgentsPageCommand}" NumberOfTapsRequired="1"/>
-                </Frame.GestureRecognizers>
+                </Frame.GestureRecognizers>            
             </Frame>
             <Frame
                 Grid.Row="1"

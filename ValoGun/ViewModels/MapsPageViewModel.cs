@@ -1,9 +1,11 @@
-﻿using MvvmHelpers;
+﻿using CommunityToolkit.Mvvm.Input;
+using MvvmHelpers;
 using Newtonsoft.Json;
 using ValoGun.Models.Maps;
+using ValoGun.Pages;
 namespace ValoGun.ViewModels
 {
-	public class MapsPageViewModel : BaseViewModel
+	public partial class MapsPageViewModel : BaseViewModel
 	{
 
 		public ObservableRangeCollection<ValoGun.Models.Maps.Data> Maps { get; set; } = [];
@@ -15,7 +17,12 @@ namespace ValoGun.ViewModels
 		}
 
 
-
+		[RelayCommand]
+		private async Task GoToMapPage(Data map)
+		{
+			MapViewModel.Map = map;
+			await Shell.Current.GoToAsync("MapPage", true);
+		}
 		private async Task LoadMaps()
 		{
 			using var stream = await FileSystem.OpenAppPackageFileAsync("maps.json");

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ValoGun.Pages.MapPage"
+             xmlns:viewmodels="clr-namespace:ValoGun.ViewModels"
+             
+             >
+    <ContentPage.BindingContext>
+        <viewmodels:MapViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <Grid RowDefinitions=".9*,.1*" ColumnDefinitions=".5*,.5*">
+                <Image
+                    x:Name="MapIconImage"
+                    Source="{Binding MainMap.displayIcon}"
+                    Aspect="AspectFill"
+                    VerticalOptions="CenterAndExpand"
+                    Grid.ColumnSpan="2"
+                
+                    />
+                <Button
+                    Grid.Row="1"
+                    WidthRequest="100"
+                    Clicked="RotateLeft"
+                    ImageSource="rotateleft.png"
+                    Grid.Column="0"
+                    IsEnabled="{Binding IsBusy}"
+                    />
+                <Button
+                    Grid.Row="1"
+                    WidthRequest="100"
+                    Clicked="RotateRight"
+                    ImageSource="rotateright.png"
+                    Grid.Column="1"
+                    IsEnabled="{Binding IsBusy}"
+                    />
+            </Grid>
+            <StackLayout Margin="0,10,0,0">
+                <Grid RowDefinitions="7*,.3*">
+                    <Frame
+                        BackgroundColor="Transparent"
+                        HeightRequest="250"
+                        HorizontalOptions="CenterAndExpand"
+                        Padding="0"
+                        BorderColor="Transparent"
+                        CornerRadius="10"
+                        IsClippedToBounds="True">
+                        <StackLayout Padding="0" Spacing="0">
+
+                            <Image
+                                Source="{Binding MainMap.splash}"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Margin="0"
+                                Aspect="AspectFill"
+                                />
+                        </StackLayout>
+                    </Frame>
+                    <Label
+                        Text="{Binding MainMap.narrativeDescription}"
+                        FontSize="18"
+                        TextColor="White"
+                        FontFamily="OpenSansRegular"
+                        VerticalOptions="EndAndExpand"
+                        Margin="10,0,0,0"
+                        Grid.Row="1"
+                        />
+                </Grid>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
